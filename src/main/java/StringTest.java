@@ -11,7 +11,9 @@ public class StringTest {
         String tst = str.concat("test");
         String fst = str.trim();
         System.out.println(tst);
-            System.out.println(fst);
+        System.out.println(fst);
 
     }
 }
+
+

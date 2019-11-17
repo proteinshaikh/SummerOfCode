@@ -5,7 +5,7 @@ public class TryCatchTest {
     }
 
 
-    String returnTest() {
+    private String returnTest() {
         try {
             //System.out.println("Try block is executed");
             return "try";
@@ -16,7 +16,20 @@ public class TryCatchTest {
             return "catch";
         } finally {
             //System.out.println("finally block is executed");
-            return "finally";
+            //return "finally";
+            try {
+                //System.out.println("Try block is executed");
+                return "try2";
+
+            }
+            //System.out.println("Try block is executed");
+            catch (Exception e) {
+                return "catch2";
+            } finally {
+                //System.out.println("finally block is executed");
+                return "finally2";
+
+            }
         }
     }
 }
