@@ -6,6 +6,7 @@ public class MissingNumber {
     public static void main(String[] args) {
         int arr[] = {0,1, 2, 3, 5};
 
+
         List<Integer> list = new ArrayList<Integer>();
         for (int nums : arr) {
             list.add(nums);
