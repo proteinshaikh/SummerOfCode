@@ -1,10 +1,13 @@
 
 interface InterLambda {
     void mthdLambda();
-    default void mthdLambda2(){
+
+
+    default void mthdLambda2() {
         System.out.println("default method inside interface");
     }
-    default void mthdLambda3(){
+
+    default void mthdLambda3() {
         System.out.println("default method inside interface 3");
     }
 
