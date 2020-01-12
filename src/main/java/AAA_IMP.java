@@ -1,6 +1,17 @@
 public class AAA_IMP {
     /*
     *
+    1. Java concepts
+	2. SQL
+	3. Hibernate
+	4. Swarm
+	5. Microservices- ZUUL, Zipkin, Eureka
+	6. Java Questions -Durga
+
+Optional: TEOMBB 160
+
+====================================================================================================================
+
     * https://onedrive.live.com/edit.aspx?resid=59957F868AD8BA96!675&cid=59957f868ad8ba96
     *
     *
