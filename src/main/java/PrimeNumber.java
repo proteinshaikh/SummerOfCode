@@ -9,7 +9,6 @@ public class PrimeNumber {
         List<Integer> listNonPrime = new ArrayList<>();
 
         int i, j;
-        //Test for commit revert
 
         for (i = 0; i <= 100; i++) {
             list.add(i);
