@@ -1,3 +1,5 @@
+package CoreJava;
+
 public class shayaris {
     /*
     *

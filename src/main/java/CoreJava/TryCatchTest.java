@@ -1,3 +1,5 @@
+package CoreJava;
+
 public class TryCatchTest {
     public static void main(String[] args) {
         TryCatchTest rt = new TryCatchTest();

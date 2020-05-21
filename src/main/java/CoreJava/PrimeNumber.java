@@ -1,10 +1,12 @@
+package CoreJava;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class PrimeNumber {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
+        List<Integer> list = new ArrayList<Integer>();
         List<Integer> listPrime = new ArrayList<>();
         List<Integer> listNonPrime = new ArrayList<>();
 
@@ -28,6 +30,8 @@ public class PrimeNumber {
         System.out.println("Numbers in ArrayList : " + list);
         System.out.println("List of Prime numbers" + listPrime);
         System.out.println("List of Non Prime numbers" + listNonPrime);
+
+
     }
 }
 

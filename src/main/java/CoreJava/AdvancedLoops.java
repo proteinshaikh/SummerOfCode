@@ -1,3 +1,5 @@
+package CoreJava;
+
 public class AdvancedLoops {
 
     public static void main(String a[]){

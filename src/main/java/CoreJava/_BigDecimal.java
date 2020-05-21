@@ -1,3 +1,5 @@
+package CoreJava;
+
 import java.math.BigDecimal;
 
 public class _BigDecimal {

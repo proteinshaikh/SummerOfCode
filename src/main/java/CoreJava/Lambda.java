@@ -1,3 +1,4 @@
+package CoreJava;
 
 interface InterLambda {
     void mthdLambda();

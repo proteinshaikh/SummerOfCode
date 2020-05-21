@@ -1,3 +1,5 @@
+package CoreJava;
+
 public class CatchExceptions {
 
     public static void main(String[] args) {
