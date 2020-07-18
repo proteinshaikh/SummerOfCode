@@ -9,7 +9,7 @@ public class StringTest {
         a1 = a1.concat(a2);
         System.out.println(a1);
 
-        String str = new String("Zeeshan ");
+        String str = "Zeeshan ";
         String tst = str.concat("test");
         String fst = str.trim();
         System.out.println(tst);

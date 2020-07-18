@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class ArrayToArrayList {
-    public static void main(String a[]) {
+    public static void main(String[] a) {
         ArrayToArrayList aa = new ArrayToArrayList();
         //aa.vectors();
         //aa.arrayToList();

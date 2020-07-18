@@ -14,7 +14,7 @@ public class StaticTest {
     }
 
     public void doThisWork( ){
-        String str=new String("Zee");
+        String str= "Zee";
         String str1="Shaikh";
         System.out.println("Wrapper String : "+str);
         System.out.println("primitive string : "+str1);

@@ -3,7 +3,7 @@ package CoreJava;
 import java.util.*;
 
 public class Collections {
-    public static void main(String a[]) {
+    public static void main(String[] a) {
         ArrayList<String> arrayList = new ArrayList<String>();
         LinkedList<Integer> linkedList = new LinkedList<Integer>();
 
