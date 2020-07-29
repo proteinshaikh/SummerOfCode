@@ -9,8 +9,5 @@
         <module name="SummerOfCode" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SummerOfCode" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
