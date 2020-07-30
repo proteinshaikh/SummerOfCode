@@ -8,12 +8,9 @@ public class MethodReference {
         printNumbersInListFunctional(Arrays.asList(2,3,5,12,10,9));
     }
 
-    private static void print(int number){
-        System.out.println(number);
-    }
 
     private static void printNumbersInListFunctional(List<Integer> numbers) {
         numbers.stream()
-                .forEach(MethodReference::print);
+                .forEach(System.out::println);
     }
 }
