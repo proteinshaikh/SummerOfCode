@@ -2,6 +2,7 @@ package Java_8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Reduce {
     public static void main(String[] args) {
@@ -18,6 +19,12 @@ public class Reduce {
 
         int cubeOfList = list.stream().map(x -> x*x*x).reduce(0,Integer::sum);
         System.out.println("Sum of Cube of numbers = " +cubeOfList);
+
+        System.out.println(list.stream().map(x -> x*x).collect(Collectors.toList()));
+
+        List<String> strings = Arrays.asList("Zeeshan Shaikh", "Akram Shaikh", "Razia Shaikh");
+
+        System.out.println((strings.stream().filter(w -> w.contains("Zeeshan")).collect(Collectors.toList())) +" This is cool");
 
 
     }
