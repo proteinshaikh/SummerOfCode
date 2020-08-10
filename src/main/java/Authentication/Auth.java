@@ -1,6 +1,5 @@
 package Authentication;
 
-import sun.net.www.http.HttpClient;
 
 import java.util.Base64;
 
