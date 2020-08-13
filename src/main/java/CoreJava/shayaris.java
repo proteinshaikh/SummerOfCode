@@ -9,7 +9,7 @@ Aise Hote Hain Bhala Chahne Wale Mohsin,
 
 Yaad K Dast Mein Phirta Hoon Main Nange Paon,
 
-Daikh To Aa K KAbhiPaon K Chahle Mohsin,
+Daikh To Aa K KAbhi Paon K Chahle Mohsin,
 
 Kho Gayi Subha Ki Ummeed Aur Ab Lagta Hai,
 

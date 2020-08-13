@@ -9,7 +9,7 @@ public class UsingComparator {
         List<String> str = Arrays.asList("Apple","Microsoft","Zeta", "Amazon", "Google", "Facebook");
 
         //natural order sort 1
-        //str.stream().distinct().sorted().forEach(System.out::println);
+        str.stream().distinct().sorted().forEach(System.out::println);
 
         //natural order sort 2
         //str.stream().distinct().sorted(Comparator.naturalOrder()).forEach(System.out::println);

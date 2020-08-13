@@ -21,6 +21,8 @@ public class ListToMap {
         Map<Gender, List<Employees>> empgrp = emp.stream().collect(Collectors.groupingBy(Employees::getGender));
         System.out.println(empgrp);
 
+
+
     }
 
 }
