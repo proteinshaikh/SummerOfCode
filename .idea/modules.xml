@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../config-server-nfs/config-server-nfs.iml" filepath="$PROJECT_DIR$/../config-server-nfs/config-server-nfs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../reactofcode/reactofcode.iml" filepath="$PROJECT_DIR$/../reactofcode/reactofcode.iml" />
     </modules>
   </component>
 </project>
