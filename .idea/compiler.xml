@@ -8,13 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springofcode" />
         <module name="PhotoAppDiscoveryService" />
+        <module name="PhotoAppApiZuulAPIGateway" />
         <module name="PhotoAppApiUsers" />
         <module name="SummerOfCode" />
         <module name="library-apis" />
         <module name="PhotoAppAPIConfigServer" />
         <module name="PhotoAppApiAlbums" />
         <module name="PhotoAppApiAccountManagement" />
-        <module name="PhotoAppApiZuulAPIGateway" />
+        <module name="restful-web-services" />
       </profile>
     </annotationProcessing>
   </component>
@@ -28,6 +29,7 @@
       <module name="PhotoAppDiscoveryService" options="-parameters" />
       <module name="SummerOfCode" options="-parameters" />
       <module name="library-apis" options="-parameters" />
+      <module name="restful-web-services" options="-parameters" />
       <module name="springofcode" options="-parameters" />
     </option>
   </component>
