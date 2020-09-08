@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UsingComparator {
     public static void main(String[] args) {
-        List<String> str = Arrays.asList("Apple","Microsoft","Zeta", "Amazon", "Google", "Facebook");
+        List<String> str = Arrays.asList("Apple", "Microsoft", "Zeta", "Amazon", "Google", "Facebook");
 
         //natural order sort 1
         str.stream().distinct().sorted().forEach(System.out::println);

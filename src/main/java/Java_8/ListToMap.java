@@ -22,7 +22,6 @@ public class ListToMap {
         System.out.println(empgrp);
 
 
-
     }
 
 }

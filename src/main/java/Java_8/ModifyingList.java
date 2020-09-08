@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ModifyingList {
     public static void main(String[] args) {
-        List<String> courses = Arrays.asList("Apple","Microsoft","Zeta", "Amazon", "Google", "Facebook");
+        List<String> courses = Arrays.asList("Apple", "Microsoft", "Zeta", "Amazon", "Google", "Facebook");
         List<String> modifyableCourses = new ArrayList<>(courses);
         System.out.println(modifyableCourses);
         System.out.println(modifyableCourses.stream().map(str -> str.toUpperCase()).collect(Collectors.toList()));

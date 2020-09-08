@@ -28,7 +28,7 @@ public class Reduce {
 
         List<Integer> in = Arrays.asList(1, 3, 5, 4, 2);
         System.out.println("addition of even nos are = " + (String.valueOf(in.stream().filter(e -> e % 2 == 0).reduce(0, Integer::sum))));
-        
-        
+
+
     }
 }

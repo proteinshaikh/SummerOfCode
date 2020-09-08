@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public class CaseConversion {
     public static void main(String[] args) {
-        List<String> str = Arrays.asList("Apple","Microsoft","Zeta", "Amazon", "Google", "Facebook");
+        List<String> str = Arrays.asList("Apple", "Microsoft", "Zeta", "Amazon", "Google", "Facebook");
 
 
         //type 1

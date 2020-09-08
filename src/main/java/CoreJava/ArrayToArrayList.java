@@ -57,15 +57,15 @@ public class ArrayToArrayList {
         }
     }
 
-    public void dowhileloop(){
+    public void dowhileloop() {
         Vector<Integer> dint = new Vector();
         int k = 0;
-        do{
+        do {
             dint.add(k);
             k++;
-        }while (k<10);
+        } while (k < 10);
 
-        for(int d : dint){
+        for (int d : dint) {
             System.out.println(d);
         }
     }

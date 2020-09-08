@@ -14,9 +14,9 @@ public class StringTest {
         String fst = str.trim();
         System.out.println(tst);
         System.out.println(fst);
-        int i=8;
-        for(++i;i<10;i++){
-            i=i+1;
+        int i = 8;
+        for (++i; i < 10; i++) {
+            i = i + 1;
         }
         System.out.println(i);
 

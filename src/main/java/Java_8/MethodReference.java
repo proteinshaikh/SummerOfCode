@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MethodReference {
     public static void main(String[] args) {
-        printNumbersInListFunctional(Arrays.asList(2,3,5,12,10,9));
+        printNumbersInListFunctional(Arrays.asList(2, 3, 5, 12, 10, 9));
     }
 
 

@@ -12,7 +12,7 @@ public class Files {
     public static void main(String[] args) throws IOException {
 
         lines(Paths.get("sample.txt"))
-                .map(str->str.split(" "))
+                .map(str -> str.split(" "))
                 .flatMap(Arrays::stream)
                 .distinct()
                 .sorted()

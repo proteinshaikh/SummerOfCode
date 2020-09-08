@@ -2,7 +2,7 @@ package Java_8;
 
 import java.util.List;
 
-public class EmployeePojo  {
+public class EmployeePojo {
     private int id;
     private String name;
     private int age;

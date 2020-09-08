@@ -26,16 +26,16 @@ class Student implements Comparable<Student> {
     }
 }
 
-public class TestComparable{
+public class TestComparable {
     public static void main(String[] args) {
-List<Student> list = new ArrayList<Student>();
+        List<Student> list = new ArrayList<Student>();
 
-list.add(new Student("zeeshan", 1));
-list.add(new Student("Shaikh", 2));
+        list.add(new Student("zeeshan", 1));
+        list.add(new Student("Shaikh", 2));
 
         Collections.sort(list);
-        for(Student st: list){
-            System.out.println(st.rollno + "  "+ st.name);
+        for (Student st : list) {
+            System.out.println(st.rollno + "  " + st.name);
         }
     }
 }

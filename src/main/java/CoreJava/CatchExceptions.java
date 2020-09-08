@@ -3,7 +3,7 @@ package CoreJava;
 public class CatchExceptions {
 
     public static void main(String[] args) {
-        CatchExceptions ce=new CatchExceptions();
+        CatchExceptions ce = new CatchExceptions();
         ce.arithmaticException();
         ce.exceptionArithmatic();
     }

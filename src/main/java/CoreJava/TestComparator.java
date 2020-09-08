@@ -46,17 +46,17 @@ public class TestComparator {
     public static void main(String[] args) {
         List<Employee> list = new ArrayList<>();
         list.add(new Employee("Zeeshan", 1));
-        list.add(new Employee("Shaikh",2));
+        list.add(new Employee("Shaikh", 2));
 
         Collections.sort(list, new NameComparator());
-        for(Employee emp: list){
-            System.out.println("Name Comparator :" +emp.name + "  " + emp.id);
+        for (Employee emp : list) {
+            System.out.println("Name Comparator :" + emp.name + "  " + emp.id);
         }
 
 
         Collections.sort(list, new IdComparator());
-        for(Employee emp: list){
-            System.out.println("ID Comparator :" +emp.name + "  " + emp.id);
+        for (Employee emp : list) {
+            System.out.println("ID Comparator :" + emp.name + "  " + emp.id);
         }
     }
 
