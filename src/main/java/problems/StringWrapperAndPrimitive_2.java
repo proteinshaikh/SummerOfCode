@@ -1,6 +1,6 @@
 package problems;
 
-public class EqualsAndEquals {
+public class StringWrapperAndPrimitive_2 {
     public static void main(String[] args) {
         String s1 = "Sachin";
         String s2 = "Sachin";
