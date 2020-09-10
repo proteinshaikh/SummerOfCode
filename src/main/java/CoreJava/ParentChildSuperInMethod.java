@@ -7,18 +7,20 @@ public class ParentChildSuperInMethod {
     }
 }
 
-class Parents{
+class Parents {
     int var = 100;
-    Parents(){
-        System.out.println("Parentvar = "+var);
+
+    Parents() {
+        System.out.println("Parentvar = " + var);
     }
 
 }
 
-class Childs extends Parents{
+class Childs extends Parents {
     int var = 50;
-    Childs(){
 
-        System.out.println("Child var =  : "+super.var);
+    Childs() {
+
+        System.out.println("Child var =  : " + super.var);
     }
 }

@@ -84,7 +84,7 @@ public class Match {
         System.out.println("Any Match : " + courses.stream().anyMatch(course -> course.getMarks() > 90));
 
         //Natural sort
-        System.out.println(courses.stream().sorted(Comparator.comparing(Course::getMarks)).collect(Collectors.toList()));
+        System.out.println("reverse sorting " + (courses.stream().sorted(Comparator.comparing(Course::getMarks).reversed()).collect(Collectors.toList())));
 
         //Decreasing sort
         System.out.println(courses.stream()

@@ -3,10 +3,12 @@ package Java_8;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CaseConversion {
     public static void main(String[] args) {
-        List<String> str = Arrays.asList("Apple","Microsoft","Zeta", "Amazon", "Google", "Facebook");
+        List<String> str = Arrays.asList("Apple", "Microsoft", "Zeta", "Amazon", "Google", "Facebook");
+
 
         //type 1
         str.stream().map(String::toUpperCase).forEach(System.out::println);

@@ -8,13 +8,13 @@ public class ParentChildConstructor {
 }
 
 class Parent {
-    Parent(){
+    Parent() {
         System.out.println("I am Parent constructor");
     }
 }
 
-class Child extends Parent{
-    Child(){
+class Child extends Parent {
+    Child() {
         super();
         System.out.println("I am Child constructor");
     }

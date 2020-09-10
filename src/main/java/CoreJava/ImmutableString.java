@@ -8,7 +8,7 @@ public class ImmutableString {
         System.out.println("hashcode for str2 before equalling : " + str2.hashCode());
         System.out.println(str1);
         System.out.println(str2);
-        System.out.println("uppercase surname : " +str2.toUpperCase());
+        System.out.println("uppercase surname : " + str2.toUpperCase());
         System.out.println(str2 = str1);
         System.out.println(str1 = str2);
 
@@ -17,8 +17,7 @@ public class ImmutableString {
         System.out.println(str1);
         System.out.println(str2);
 
-        System.out.println("uppercase name : " +str1.toUpperCase());
-
+        System.out.println("uppercase name : " + str1.toUpperCase());
 
 
     }
