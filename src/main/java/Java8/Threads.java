@@ -1,4 +1,4 @@
-package Java_8;
+package Java8;
 
 public class Threads {
     public static void main(String[] args) {

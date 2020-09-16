@@ -1,6 +1,4 @@
-package Java_8;
-
-import java.util.List;
+package Java8;
 
 public class EmployeePojo {
     private int id;

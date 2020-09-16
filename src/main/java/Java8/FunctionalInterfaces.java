@@ -1,9 +1,6 @@
-package Java_8;
-
-import sun.invoke.empty.Empty;
+package Java8;
 
 import java.util.Optional;
-import java.util.function.Consumer;
 
 public class FunctionalInterfaces {
     //optional
