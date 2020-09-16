@@ -1,8 +1,5 @@
 package CoreJava;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class StringConcat {
     public static void main(String[] args) {
         String[] s={"a","bc"};
