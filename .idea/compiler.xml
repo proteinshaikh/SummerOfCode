@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tomcat" />
+        <module name="PhotoAppApiAlbums" />
         <module name="PhotoAppDiscoveryService" />
         <module name="PhotoAppApiUsers" />
         <module name="SummerOfCode" />
         <module name="PhotoAppAPIConfigServer" />
-        <module name="PhotoAppApiAlbums" />
+        <module name="tomcat" />
         <module name="PhotoAppApiAccountManagement" />
         <module name="PhotoAppApiZuulAPIGateway" />
       </profile>
