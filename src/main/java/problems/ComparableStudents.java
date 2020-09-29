@@ -1,9 +1,7 @@
 package problems;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 //sort by grade in asc order and if grade is same sort by name
 public class ComparableStudents {
@@ -18,8 +16,12 @@ public class ComparableStudents {
         students.add(new Students(6, "zeeshan", 99));
 
         //using java 7
-        Collections.sort(students);
-        System.out.println(students);
+        //Collections.sort(students);
+        //System.out.println(students);
+
+        //using java 8
+        System.out.println(students.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList()));
+
 
 
     }

@@ -6,16 +6,21 @@ import java.util.*;
 public class FruitsComparator {
     public static void main(String[] args) {
         List<Fruits> fruits=new ArrayList<>();
-        fruits.add(new Fruits(1,"mango", 45.5,"India"));
+        fruits.add(new Fruits(4,"Banana", 45.5,"India"));
         fruits.add(new Fruits(2,"avocado", 100.10,"usa"));
         fruits.add(new Fruits(3,"pineaple", 13.65163,"canada"));
         fruits.add(new Fruits(4,"Apple", 44,"India"));
         fruits.add(new Fruits(5,"Sugarcane", 13.65165,"england"));
-        fruits.add(new Fruits(6,"Papaya", 100.88,"Russia"));
+        fruits.add(new Fruits(6,"Papaya", 44,"Russia"));
 
-        Collections.sort(fruits, new SortByName());
+        //using java 7
+        /*Collections.sort(fruits, new SortByName());
         System.out.println(fruits);
         Collections.sort(fruits, new SortByPrice().reversed());
+        System.out.println(fruits);*/
+
+        //using java 8
+        fruits.sort(Comparator.comparing(Fruits::getPrice).thenComparing(Fruits::getId).thenComparing(Fruits::getName));
         System.out.println(fruits);
 
     }
