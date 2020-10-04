@@ -37,6 +37,7 @@ class Worker extends Thread{
             Thread.sleep(delay);
             latch.countDown();
             System.out.println(Thread.currentThread().getName()+" finished");
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
