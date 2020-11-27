@@ -12,7 +12,7 @@ public class PrimeNumber {
 
         int i, j;
 
-        for (i = 0; i <= 100; i++) {
+        for (i = 0; i <= 1000; i++) {
             list.add(i);
         }
         for (int num : list) {

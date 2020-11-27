@@ -25,7 +25,8 @@ public class SortAgeName {
                 return res;
             }
         });
-        System.out.println(employees);
+        System.out.println(employees +"\n");
+        System.out.println(employees +"\n");
 
 
     }
