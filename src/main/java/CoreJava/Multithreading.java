@@ -1,3 +1,4 @@
+package CoreJava;
 public class Multithreading {
     public static void main(String[] args) throws InterruptedException {
         Whatsapp whatsapp=new Whatsapp();
