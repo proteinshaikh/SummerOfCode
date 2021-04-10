@@ -2,7 +2,12 @@ package Algorithms;
 
 public class RotatedisSubstring_1_9 {
     public static void main(String[] args) {
-        System.out.println(isRotation("waterbottle", "erbottlewat"));
+        int res= isRotation("waterbottle", "erbottlewat");
+        if(res >= 0){
+            System.out.println("Rotated Substring found");
+        }else{
+            System.out.println("Rotated Substring not found");
+        }
 
 
     }
