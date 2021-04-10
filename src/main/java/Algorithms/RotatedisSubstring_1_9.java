@@ -2,14 +2,12 @@ package Algorithms;
 
 public class RotatedisSubstring_1_9 {
     public static void main(String[] args) {
-        int res= isRotation("waterbottle", "erbottlewat");
-        if(res >= 0){
+        int res = isRotation("waterbottle", "erbottlewat");
+        if (res >= 0) {
             System.out.println("Rotated Substring found");
-        }else{
+        } else {
             System.out.println("Rotated Substring not found");
         }
-
-
     }
 
     static int isRotation(String s1, String s2) {
@@ -32,9 +30,7 @@ public class RotatedisSubstring_1_9 {
                     break;
             if (j == len1)
                 return i;
-
         }
         return -1;
-
     }
 }
