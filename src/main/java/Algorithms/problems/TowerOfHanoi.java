@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.problems;
 
 public class TowerOfHanoi {
 	public static void main(String... args) {

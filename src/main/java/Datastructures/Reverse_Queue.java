@@ -1,4 +1,4 @@
-package DS;
+package Datastructures;
 
 //Reverse a queue
 

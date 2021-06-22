@@ -1,4 +1,4 @@
-package DS;
+package Datastructures;
 
 public class BinaryTree {
 

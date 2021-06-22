@@ -1,4 +1,4 @@
-package Algorithms;
+package Datastructures;
 
 public class OneDimArray {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Algorithms;
+package Datastructures;
 
 public class RotatedisSubstring_1_9 {
     public static void main(String[] args) {

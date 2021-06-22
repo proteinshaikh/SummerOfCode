@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.sorting;
 
 /*
  * In bubble sort algorithm, array is traversed from first element to last element. Here,

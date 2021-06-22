@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.searching;
 //test comment
 public class BinarySearchRecursive {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package DS;
+package Datastructures;
 
 import java.util.ArrayList;
 import java.util.List;
