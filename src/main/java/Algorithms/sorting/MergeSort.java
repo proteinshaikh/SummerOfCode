@@ -2,13 +2,18 @@ package Algorithms.sorting;
 
 public class MergeSort {
 
+    // Merges two subarrays of arr[].
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+
     public static void main(String[] args) {
         int arr[] = {12, 11, 13, 5, 6, 7};
         System.out.println("Given Array : ");
         printArray(arr);
 
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(arr, 0, arr.length - 1);
+        MergeSort obj = new MergeSort();
+        obj.sort(arr, 0, arr.length - 1);
+        //obj.sort(given array, left index, right index)
 
         System.out.println("\nSorted Array: ");
         printArray(arr);
@@ -47,7 +52,6 @@ public class MergeSort {
             i++;
             k++;
         }
-
 
     }
 
