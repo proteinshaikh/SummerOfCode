@@ -1,5 +1,6 @@
 package Algorithms.searching;
 //test comment
+//Search a sorted array by repeatedly dividing the search interval in half.
 public class BinarySearchRecursive {
 	public static void main(String[] args) {
 		
