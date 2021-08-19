@@ -6,16 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PhotoAppApiAccountManagement" />
-        <module name="SummerOfCode" />
-        <module name="PhotoAppApiZuulAPIGateway" />
         <module name="tomcat" />
-        <module name="PhotoAppAPIConfigServer" />
-        <module name="PhotoAppApiAlbums" />
         <module name="PhotoAppDiscoveryService" />
-        <module name="PhotoAppApiUsers" />
+        <module name="SummerOfCode" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PhotoAppApiAccountManagement" target="1.8" />
+      <module name="PhotoAppApiAlbums" target="1.8" />
+      <module name="PhotoAppAPIConfigServer" target="1.8" />
+      <module name="PhotoAppApiUsers" target="1.8" />
+      <module name="PhotoAppApiZuulAPIGateway" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
