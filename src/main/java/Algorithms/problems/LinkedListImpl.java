@@ -1,5 +1,8 @@
 package Algorithms.problems;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinkedListImpl {
 
     public static void main(String[] args) {
@@ -31,6 +34,9 @@ public class LinkedListImpl {
             node = node.next;
             node1 = node1.next;
             //temp=temp.next;
+            List longlist=new ArrayList<>();
+            List test=longlist;
+
         }
 
         return res;
