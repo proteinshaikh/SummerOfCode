@@ -17,6 +17,7 @@ public class TestEqualsAndHashcode {
             System.out.println("hashcodes are NOT equal");
         }
 
+        System.out.println(students.size());
         System.out.println("students contains :" + students.contains(new Student("Zeeshan", 1, 1)));
 
     }
