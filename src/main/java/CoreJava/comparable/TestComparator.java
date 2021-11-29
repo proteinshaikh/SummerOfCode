@@ -6,6 +6,7 @@ import java.util.List;
 
 public class TestComparator {
     public static void main(String[] args) {
+
         List<Player> players = new ArrayList<>();
         players.add(new Player("Zeeshan", 25, 1));
         players.add(new Player("Zeeshan", 30, 2));
