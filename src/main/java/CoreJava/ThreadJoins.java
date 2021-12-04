@@ -1,8 +1,5 @@
 package CoreJava;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class JoinThreads implements Runnable {
     @Override
     public void run() {
