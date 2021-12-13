@@ -75,13 +75,17 @@ public class Match {
         );
 
         //allMatch
+        System.out.println(courses.stream().sorted(Comparator.comparing(Course::getMarks).reversed()).collect(Collectors.toList()));
         System.out.println("All Match : " + courses.stream().allMatch(course -> course.getMarks() > 90));
+        System.out.println(courses.stream().anyMatch(p -> p.getMarks() > 20));
+
 
         //allMatch
         System.out.println("None Match : " + courses.stream().noneMatch(course -> course.getMarks() > 90));
 
         //allMatch
         System.out.println("Any Match : " + courses.stream().anyMatch(course -> course.getMarks() > 90));
+        System.out.println(courses.stream().count());
 
         //Natural sort
         System.out.println("reverse sorting " + (courses.stream().sorted(Comparator.comparing(Course::getMarks).reversed()).collect(Collectors.toList())));
