@@ -79,6 +79,9 @@ public class Match {
         System.out.println("All Match : " + courses.stream().allMatch(course -> course.getMarks() > 90));
         System.out.println(courses.stream().anyMatch(p -> p.getMarks() > 20));
 
+        //get sum of marks
+        System.out.println("sum of marks: " +courses.stream().collect(Collectors.summingInt(Course::getMarks)));
+
 
         //allMatch
         System.out.println("None Match : " + courses.stream().noneMatch(course -> course.getMarks() > 90));
