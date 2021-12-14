@@ -3,6 +3,7 @@ package Java8;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 class Course {
@@ -81,6 +82,11 @@ public class Match {
 
         //get sum of marks
         System.out.println("sum of marks: " +courses.stream().collect(Collectors.summingInt(Course::getMarks)));
+
+
+        //max marks
+        Optional<Course> optionalCourse = courses.stream().collect(Collectors.maxBy(Comparator.comparing(Course::getMarks)));
+        System.out.println("max marks: " + optionalCourse);
 
 
         //allMatch
