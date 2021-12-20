@@ -1,7 +1,10 @@
 package problems;
 
 public class Instances {
+
+
     public static void main(String[] args) {
+
         A a = new A();
         B b = new B();
         C c = new C();
@@ -15,14 +18,14 @@ public class Instances {
     }
 }
 
-class A{
+class A {
 
 }
 
-class B extends A{
+class B extends A {
 
 }
 
-class C extends B{
+class C extends B {
 
 }
