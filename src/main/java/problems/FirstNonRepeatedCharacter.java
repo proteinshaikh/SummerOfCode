@@ -3,6 +3,7 @@ package problems;
 public class FirstNonRepeatedCharacter {
     public static void main(String[] args) {
         System.out.println("first non repeating character is: " + getFirstNonRepeatedCharacter("twitter"));
+        System.out.println(tesTryCatchFinally());
 
     }
 
@@ -26,5 +27,16 @@ public class FirstNonRepeatedCharacter {
             }
         }
         return temp;
+    }
+
+    static String tesTryCatchFinally() {
+        String zee = null;
+        try {
+            zee = "zeeshan";
+        } catch (Exception e) {
+            return "exception";
+        } finally {
+            return zee;
+        }
     }
 }
