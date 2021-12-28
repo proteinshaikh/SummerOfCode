@@ -1,15 +1,18 @@
 package problems;
 
+import java.util.concurrent.TimeUnit;
+
 public class FirstNonRepeatedCharacter {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("first non repeating character is: " + getFirstNonRepeatedCharacter("twitter"));
         System.out.println(tesTryCatchFinally());
 
     }
 
-    static char getFirstNonRepeatedCharacter(String input) {
+    static char getFirstNonRepeatedCharacter(String input) throws InterruptedException {
         char temp = 0;
         int counter = 0;
+        TimeUnit.SECONDS.sleep(1000);
 
         for (int i = 0; i < input.length(); i++) {
             for (int j = 0; j < input.length(); j++) {
