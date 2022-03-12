@@ -13,6 +13,7 @@ public class Pyramid {
                 System.out.print("# ");
             }
             System.out.println();
+            System.out.println("zeeshan akram shaikh");
         }
     }
 }
