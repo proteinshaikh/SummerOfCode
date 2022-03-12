@@ -17,9 +17,5 @@ public class Main {
         departments.add(new Department(2, "Marketing"));
         departments.add(new Department(3, "Finance"));
         departments.add(new Department(4, "HR"));
-
-        
-
-
     }
 }
