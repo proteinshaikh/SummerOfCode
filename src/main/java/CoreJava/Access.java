@@ -12,8 +12,6 @@ public class Access {
     }
 
     private void printThis(int x, int y) {
-        x = x;
-        y = y;
         System.out.println("printThis method invoked");
         System.out.println("x: " + this.x + " " + " y: " + this.y);
     }
