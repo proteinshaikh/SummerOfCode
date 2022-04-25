@@ -2,6 +2,8 @@ package CoreJava;
 
 /*
  * this variable refers to the instance variable (the variable declared at class level)
+ * this.x always means the variable x which is declared at class level
+ * and x just means the variable at method level
  * */
 public class Access {
     private int x = 0;
