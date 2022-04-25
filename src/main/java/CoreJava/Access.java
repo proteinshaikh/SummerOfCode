@@ -1,5 +1,8 @@
 package CoreJava;
 
+/*
+ * this variable refers to the instance variable (the variable declared at class level)
+ * */
 public class Access {
     private int x = 0;
     private int y = 0;
