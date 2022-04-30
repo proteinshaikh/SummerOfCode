@@ -1,3 +1,4 @@
 # Project exclude paths
 /target/
 .idea/encodings.xml
+.idea/runConfigurations.xml
