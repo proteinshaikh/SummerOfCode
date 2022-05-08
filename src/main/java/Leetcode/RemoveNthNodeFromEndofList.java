@@ -69,7 +69,7 @@ public class RemoveNthNodeFromEndofList {
 
     // This function prints contents of linked
     // list starting from the given node
-    static void display(Node head) {
+    public static void display(Node head) {
         Node temp = head;
         while (temp != null) {
             System.out.print(temp.data + " ");
