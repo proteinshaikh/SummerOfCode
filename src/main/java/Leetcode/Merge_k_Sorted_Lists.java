@@ -1,9 +1,5 @@
 package Leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Merge_k_Sorted_Lists {
 
     public static void main(String[] args) {
@@ -24,7 +20,6 @@ public class Merge_k_Sorted_Lists {
         }
         System.out.println();
     }
-
 
     public static ListNode mergeKLists(ListNode[] lists) {
         return partion(lists, 0, lists.length - 1);
