@@ -14,9 +14,9 @@ public class Phone_Number {
     }
 
     private List<String> combinations = new ArrayList<>();
-    private Map<Character, String> letters = Map.of(
+  /*  private Map<Character, String> letters = Map.of(
             '2', "abc", '3', "def", '4', "ghi", '5', "jkl",
-            '6', "mno", '7', "pqrs", '8', "tuv", '9', "wxyz");
+            '6', "mno", '7', "pqrs", '8', "tuv", '9', "wxyz");*/
     private String phoneDigits;
 
     public List<String> letterCombinations(String digits) {
@@ -39,7 +39,7 @@ public class Phone_Number {
         }
 
         // Get the letters that the current digit maps to, and loop through them
-        String possibleLetters = letters.get(phoneDigits.charAt(index));
+        /*String possibleLetters = letters.get(phoneDigits.charAt(index));
         for (char letter : possibleLetters.toCharArray()) {
             // Add the letter to our current path
             path.append(letter);
@@ -47,6 +47,6 @@ public class Phone_Number {
             backtrack(index + 1, path);
             // Backtrack by removing the letter before moving onto the next
             path.deleteCharAt(path.length() - 1);
-        }
+        }*/
     }
 }
