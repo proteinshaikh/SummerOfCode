@@ -19,5 +19,8 @@ public class UsingComparator {
 
         //reverse sort 2
         str.stream().distinct().sorted(Comparator.comparing(x -> x.length())).forEach(System.out::println);
+
+        str.stream().distinct().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+
     }
 }

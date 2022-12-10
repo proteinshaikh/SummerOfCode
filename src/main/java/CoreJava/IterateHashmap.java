@@ -49,5 +49,11 @@ public class IterateHashmap {
             System.out.println("Exception initerate over hashmap " + e);
         }
 
+        for (Map.Entry<Integer, String> maps : map.entrySet()) {
+            int key = maps.getKey();
+            String value = maps.getValue();
+            System.out.println(key + " " + value);
+        }
+
     }
 }
