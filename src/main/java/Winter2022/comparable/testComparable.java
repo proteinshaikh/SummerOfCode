@@ -1,6 +1,4 @@
-package Winter2022;
-
-import org.jetbrains.annotations.NotNull;
+package Winter2022.comparable;
 
 import java.util.ArrayList;
 import java.util.Collections;
