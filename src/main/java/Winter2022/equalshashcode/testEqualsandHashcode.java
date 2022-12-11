@@ -63,6 +63,8 @@ public class testEqualsandHashcode {
         List<Building> list = new ArrayList<>();
         Building b1 = new Building("zeeshan", 1);
         Building b2 = new Building("zeeshan", 1);
+        list.add(b1);
+        list.add(b2);
 
         System.out.println(b1.hashCode());
         System.out.println(b2.hashCode());
