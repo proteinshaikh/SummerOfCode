@@ -11,6 +11,7 @@ public class CaseConversion {
 
         //type 1
         str.stream().map(String::toUpperCase).forEach(System.out::println);
+        str.stream().map(String::toLowerCase).forEach(System.out::println);
 
 
         //type 2: storing in list
