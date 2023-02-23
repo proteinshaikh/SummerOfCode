@@ -6,29 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-cloud-circuit-breaker" />
+        <module name="junit" />
+        <module name="SummerOfCode" />
         <module name="tomcat" />
         <module name="PhotoAppDiscoveryService" />
-        <module name="SummerOfCode" />
+        <module name="sosb" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="PhotoAppApiAccountManagement" target="1.8" />
-      <module name="PhotoAppApiAlbums" target="1.8" />
-      <module name="PhotoAppAPIConfigServer" target="1.8" />
-      <module name="PhotoAppApiUsers" target="1.8" />
-      <module name="PhotoAppApiZuulAPIGateway" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="PhotoAppAPIConfigServer" options="-parameters" />
-      <module name="PhotoAppApiAccountManagement" options="-parameters" />
-      <module name="PhotoAppApiAlbums" options="-parameters" />
-      <module name="PhotoAppApiUsers" options="-parameters" />
-      <module name="PhotoAppApiZuulAPIGateway" options="-parameters" />
-      <module name="PhotoAppDiscoveryService" options="-parameters" />
       <module name="SummerOfCode" options="-parameters" />
-      <module name="tomcat" options="-parameters" />
     </option>
   </component>
 </project>
