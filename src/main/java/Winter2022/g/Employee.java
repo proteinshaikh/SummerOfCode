@@ -1,8 +1,12 @@
 package Winter2022.g;
 
 import net.bytebuddy.implementation.bytecode.Throw;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class Employee implements Comparable<Employee> {
@@ -138,18 +142,19 @@ public class Employee implements Comparable<Employee> {
         for (int i = 0; i < 5; i++) {
             new Thread(new RunThread()).start();
         }
-        System.out.println("-------------Test thread safe singleton------------------------");
+
         System.out.println("-------------Test builder------------------------");
+        //done in test class
         System.out.println("-------------Test factory------------------------");
+        //done in factory package
         System.out.println("-------------Test twosum------------------------");
+
         System.out.println("-------------Test count words------------------------");
         System.out.println("-------------factorial using recursion------------------------");
         System.out.println("-------------rotate array------------------------");
         System.out.println("-------------flatmap------------------------");
         System.out.println("-------------lambda exp------------------------");
     }
-
-
 }
 
 class NameComp implements Comparator<Employee> {
@@ -191,7 +196,7 @@ class TSingleton {
 
     }
 
-    public TSingleton getInstance() {
+    public static TSingleton getInstance() {
         if (instance == null) {
             synchronized (TSingleton.class) {
                 if (instance == null) {
@@ -200,6 +205,10 @@ class TSingleton {
             }
         }
         return instance;
+    }
+
+    public void doSomething() {
+
     }
 
 }

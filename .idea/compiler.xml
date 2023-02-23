@@ -12,10 +12,11 @@
         <module name="tomcat" />
         <module name="spring-kafka" />
         <module name="PhotoAppDiscoveryService" />
-        <module name="sosb" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="sosb" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
