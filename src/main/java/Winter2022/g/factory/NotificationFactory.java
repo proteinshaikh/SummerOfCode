@@ -1,6 +1,5 @@
 package Winter2022.g.factory;
 
-import org.aspectj.weaver.ast.Not;
 
 public class NotificationFactory {
 

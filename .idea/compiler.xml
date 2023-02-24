@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,17 +13,18 @@
         <module name="tomcat" />
         <module name="spring-kafka" />
         <module name="PhotoAppDiscoveryService" />
+        <module name="sosb" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="sosb" target="1.5" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SummerOfCode" options="-parameters" />
       <module name="junit" options="-parameters" />
+      <module name="sosb" options="-parameters" />
       <module name="spring-cloud-circuit-breaker" options="-parameters" />
+      <module name="spring-kafka" options="-parameters" />
     </option>
   </component>
 </project>

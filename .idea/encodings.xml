@@ -6,8 +6,10 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/junit/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/junit/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sosb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-circuit-breaker/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-circuit-breaker/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-kafka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../tomcat/src/main/java" charset="UTF-8" />
