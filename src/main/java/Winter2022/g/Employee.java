@@ -142,7 +142,7 @@ public class Employee implements Comparable<Employee> {
         System.out.println("-------------Test factory------------------------");
         //done in factory package
         System.out.println("-------------Test twosum------------------------");
-
+        //done in seperate class
         System.out.println("-------------Test count words------------------------");
         System.out.println("-------------factorial using recursion------------------------");
         System.out.println("-------------rotate array------------------------");
