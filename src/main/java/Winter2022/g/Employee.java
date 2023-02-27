@@ -4,6 +4,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Employee implements Comparable<Employee> {
+
+
+    static int factorial(int num) {
+        if (num == 0 || num == 1) return 1;
+        return factorial(num - 1) * num;
+    }
+
+
     private int id;
     private String name;
 
@@ -144,10 +152,40 @@ public class Employee implements Comparable<Employee> {
         System.out.println("-------------Test twosum------------------------");
         //done in seperate class
         System.out.println("-------------Test count words------------------------");
+        countWords("hello hello zeeshan zeeshan shaikh shaikh shaikh");
         System.out.println("-------------factorial using recursion------------------------");
+        System.out.println("factorial of num is : " + factorial(5));
         System.out.println("-------------rotate array------------------------");
         System.out.println("-------------flatmap------------------------");
+        for (int n : StringToNumsUsingFlatMap(Arrays.asList("1,2,3", "4,5,6", "7,8,9"))) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
         System.out.println("-------------lambda exp------------------------");
+    }
+
+    static void countWords(String str) {
+        String[] strings = str.split("\\s+");
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < strings.length; i++) {
+            if (map.containsKey(strings[i])) {
+                map.put(strings[i], map.getOrDefault(strings[i], 0) + 1);
+            } else {
+                map.put(strings[i], 1);
+            }
+        }
+
+        for (Map.Entry<String, Integer> m : map.entrySet()) {
+            System.out.print(m.getKey() + ":" + m.getValue() + " ");
+        }
+        System.out.println();
+    }
+
+    static List<Integer> StringToNumsUsingFlatMap(List<String> list) {
+        return list.stream()
+                .flatMap(x -> Arrays.stream(x.split(",")))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
 
