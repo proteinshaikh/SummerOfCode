@@ -97,7 +97,7 @@ public class Employee implements Comparable<Employee> {
         System.out.println("average income = " + list.stream().mapToDouble(x -> x.getSalary()).average());
 
         System.out.println("-------------testing max salary using streams------------------------");
-        System.out.println("max income = " + list.stream().mapToDouble(x -> x.getSalary()).average());
+        System.out.println("max income = " + list.stream().mapToDouble(x -> x.getSalary()).max());
 
         System.out.println("-------------testing sort student id reverse using streams------------------------");
 
@@ -156,12 +156,26 @@ public class Employee implements Comparable<Employee> {
         System.out.println("-------------factorial using recursion------------------------");
         System.out.println("factorial of num is : " + factorial(5));
         System.out.println("-------------rotate array------------------------");
+        for (int a : rotateArr(new int[]{1, 2, 3, 4, 5}, 2)) {
+            System.out.print(a + " ");
+        }
         System.out.println("-------------flatmap------------------------");
         for (int n : StringToNumsUsingFlatMap(Arrays.asList("1,2,3", "4,5,6", "7,8,9"))) {
             System.out.print(n + " ");
         }
         System.out.println();
         System.out.println("-------------lambda exp------------------------");
+
+    }
+
+    static int[] rotateArr(int[] arr, int d) {
+        int len = arr.length;
+        int[] temp = new int[len];
+
+        for (int i = 0; i < len; i++) {
+            temp[i] = arr[(d + i) % len];
+        }
+        return temp;
     }
 
     static void countWords(String str) {
