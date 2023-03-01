@@ -168,7 +168,7 @@ public class Person implements Comparable<Person> {
     @Override
     public int hashCode() {
         int res = 17;
-        res = 831 * res + id;
+        res = 31 * res + id;
         res = 31 * res + ((name != null) ? name.hashCode() : 0);
         return res;
     }
