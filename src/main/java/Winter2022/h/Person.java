@@ -1,5 +1,9 @@
 package Winter2022.h;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Person {
 
     private int id;
@@ -72,9 +76,50 @@ public class Person {
         System.out.println("-------------Test count words------------------------");
         System.out.println("-------------factorial using recursion------------------------");
         System.out.println("-------------rotate array------------------------");
-        System.out.println("-------------flatmap------------------------");
-        System.out.println("-------------lambda exp------------------------");
-        System.out.println("-------------3rd highest salary------------------------");
+        System.out.println("-------------flatmap------------------------");//done
+        getFlatMap();
+        System.out.println("-------------lambda exp------------------------");//done
         //done in seperate package
+        System.out.println("-------------3rd highest salary------------------------");//done
+        //done in seperate package
+    }
+
+    static void getFlatMap() {
+        //flatmap for Strings to integers
+        List<String> strings = Arrays.asList("1,2,3", "4,5,6", "7,8,9");
+
+        List<Integer> list = strings.stream()
+                .flatMap(x -> Arrays.stream(x.split(",")))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        for (int a : list) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
+
+        //flatmap of Strings to characters
+        List<String> stringList = Arrays.asList("hello", "world", "zeeshan");
+
+        List<Character> characters = stringList.stream()
+                .flatMap(word -> word.chars().mapToObj(c -> (char) c))
+                .collect(Collectors.toList());
+
+        for (char a : characters) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
+
+        //flatmap of Integers to Integers
+        List<List<Integer>> lists = Arrays.asList(Arrays.asList(1, 2, 3), Arrays.asList(4, 5, 6), Arrays.asList(7, 8, 9));
+
+        List<Integer> integerList = lists.stream()
+                .flatMap(x -> x.stream())
+                .collect(Collectors.toList());
+
+        for (int a : integerList) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
     }
 }
