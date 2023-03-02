@@ -53,4 +53,28 @@ public class Person {
         res = 31 * res + ((name != null) ? name.hashCode() : 0);
         return res;
     }
+
+    public static void main(String[] args) {
+        System.out.println("-------------testing distinct id/name using streams------------------------");
+        System.out.println("-------------testing average income using streams------------------------");
+        System.out.println("-------------testing max salary using streams------------------------");
+        System.out.println("-------------testing sort student id reverse using streams------------------------");
+        System.out.println("-------------testing comparables------------------------");
+        System.out.println("-------------testing comparators name------------------------");
+        System.out.println("-------------testing comparators id------------------------");
+        System.out.println("-------------testing equals and hashcode------------------------");
+        System.out.println("-------------Test ExThread------------------------");
+        System.out.println("-------------Test Threads Runnable------------------------");
+        System.out.println("-------------Test thread safe singleton------------------------");
+        System.out.println("-------------Test builder------------------------");
+        System.out.println("-------------Test factory------------------------");
+        System.out.println("-------------Test twosum------------------------");
+        System.out.println("-------------Test count words------------------------");
+        System.out.println("-------------factorial using recursion------------------------");
+        System.out.println("-------------rotate array------------------------");
+        System.out.println("-------------flatmap------------------------");
+        System.out.println("-------------lambda exp------------------------");
+        System.out.println("-------------3rd highest salary------------------------");
+        //done in seperate package
+    }
 }
