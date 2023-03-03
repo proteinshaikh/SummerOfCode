@@ -1,7 +1,8 @@
 package Winter2022.h;
 
-import java.util.Arrays;
-import java.util.List;
+import Winter2022.g.Employee;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Person {
@@ -59,7 +60,29 @@ public class Person {
     }
 
     public static void main(String[] args) {
+
+        List<Person> list = new ArrayList<>();
+        Person p1 = new Person(10, "zee", 1000);
+        Person p2 = new Person(20, "sha", 2000);
+        Person p3 = new Person(30, "akr", 3000);
+        Person p4 = new Person(10, "akr", 3000);
+
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+        list.add(p4);
+
+        Map<Integer, Person> map = new HashMap<>();
+        map.put(1, p1);
+        map.put(2, p2);
+        map.put(3, p3);
+        map.put(4, p4);
+
         System.out.println("-------------testing distinct id/name using streams------------------------");
+        List<Person> distinct = list.stream().distinct().collect(Collectors.toList());
+        for (Person p : distinct) {
+            System.out.println(p.getId() + " " + p.getName() + " " + p.getSalary());
+        }
         System.out.println("-------------testing average income using streams------------------------");
         System.out.println("-------------testing max salary using streams------------------------");
         System.out.println("-------------testing sort student id reverse using streams------------------------");
