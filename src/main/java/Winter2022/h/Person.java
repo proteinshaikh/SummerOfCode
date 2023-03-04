@@ -1,11 +1,12 @@
 package Winter2022.h;
 
 import Winter2022.g.Employee;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Person {
+public class Person implements Comparable<Person> {
 
     private int id;
     private String name;
@@ -84,8 +85,15 @@ public class Person {
             System.out.println(p.getId() + " " + p.getName() + " " + p.getSalary());
         }
         System.out.println("-------------testing average income using streams------------------------");
+        System.out.println("average income: " + list.stream().mapToDouble(x -> x.salary).average().orElse(0.0));
         System.out.println("-------------testing max salary using streams------------------------");
+        System.out.println("max salary: " + list.stream().mapToDouble(x -> x.salary).max().orElseThrow(IllegalArgumentException::new));
         System.out.println("-------------testing sort student id reverse using streams------------------------");
+
+        for (Person p : list.stream().sorted(Comparator.comparingInt(Person::getId).reversed().thenComparing(Person::getName)).collect(Collectors.toList())) {
+            System.out.println(p.getId() + p.getName() + p.getSalary());
+        }
+
         System.out.println("-------------testing comparables------------------------");
         System.out.println("-------------testing comparators name------------------------");
         System.out.println("-------------testing comparators id------------------------");
@@ -105,6 +113,7 @@ public class Person {
         //done in seperate package
         System.out.println("-------------3rd highest salary------------------------");//done
         //done in seperate package
+        System.out.println("-------------delete hashmap entries------------------------");
     }
 
     static void getFlatMap() {
@@ -144,5 +153,35 @@ public class Person {
             System.out.print(a + " ");
         }
         System.out.println();
+    }
+
+    @Override
+    public int compareTo(@NotNull Person o) {
+        if (id > o.id) return 1;
+        if (id < o.id) return -1;
+        else return name.compareTo(o.name);
+    }
+}
+
+class IdComp implements Comparator<Person>{
+
+    @Override
+    public int compare(Person o1, Person o2) {
+        return o1.getId() - o2.getId();
+    }
+}
+
+class NameComp implements Comparator<Person>{
+    @Override
+    public int compare(Person o1, Person o2){
+        return o1.getName().compareTo(o2.getName());
+    }
+}
+
+class SalaryComp implements Comparator<Person>{
+
+    @Override
+    public int compare(Person o1, Person o2) {
+        return Double.compare(o1.getSalary(), o2.getSalary());
     }
 }
