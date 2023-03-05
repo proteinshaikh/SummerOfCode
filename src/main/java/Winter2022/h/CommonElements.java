@@ -3,7 +3,7 @@ package Winter2022.h;
 import java.util.*;
 
 
-//most effitient way
+//most efficient way
 public class CommonElements {
 
     static List<Integer> getCommonElements(int[] arr1, int[] arr2) {
