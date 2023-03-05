@@ -9,8 +9,6 @@ import java.util.concurrent.Executors;
 public class Tests {
     @Test
     public void testSingleton() throws InterruptedException {
-        System.out.println("-------------Test thread safe singleton------------------------");
-
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 100; i++) {
             executorService.submit(() -> {

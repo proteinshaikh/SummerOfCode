@@ -2,8 +2,12 @@ package Winter2022.h;
 
 import Winter2022.g.Employee;
 import org.jetbrains.annotations.NotNull;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class Person implements Comparable<Person> {
@@ -93,7 +97,9 @@ public class Person implements Comparable<Person> {
         for (Person p : list.stream().sorted(Comparator.comparingInt(Person::getId).reversed().thenComparing(Person::getName)).collect(Collectors.toList())) {
             System.out.println(p.getId() + p.getName() + p.getSalary());
         }
-
+        System.out.println("-------------testing sort players by goals------------------------");
+        System.out.println("-------------testing foreach method in hashmap- new java 8------------------------");
+        map.forEach((key, value) -> System.out.println(key + " " + value.id + " " + value.name + " " + value.salary));
         System.out.println("-------------testing comparables------------------------");
         System.out.println("-------------testing comparators name------------------------");
         System.out.println("-------------testing comparators id------------------------");
@@ -101,6 +107,7 @@ public class Person implements Comparable<Person> {
         System.out.println("-------------Test ExThread------------------------");
         System.out.println("-------------Test Threads Runnable------------------------");
         System.out.println("-------------Test thread safe singleton------------------------");
+        //done in seperate class
         System.out.println("-------------Test builder------------------------");
         System.out.println("-------------Test factory------------------------");
         System.out.println("-------------Test twosum------------------------");
@@ -114,6 +121,8 @@ public class Person implements Comparable<Person> {
         System.out.println("-------------3rd highest salary------------------------");//done
         //done in seperate package
         System.out.println("-------------delete hashmap entries------------------------");
+
+
     }
 
     static void getFlatMap() {
@@ -163,7 +172,7 @@ public class Person implements Comparable<Person> {
     }
 }
 
-class IdComp implements Comparator<Person>{
+class IdComp implements Comparator<Person> {
 
     @Override
     public int compare(Person o1, Person o2) {
@@ -171,17 +180,57 @@ class IdComp implements Comparator<Person>{
     }
 }
 
-class NameComp implements Comparator<Person>{
+class NameComp implements Comparator<Person> {
     @Override
-    public int compare(Person o1, Person o2){
+    public int compare(Person o1, Person o2) {
         return o1.getName().compareTo(o2.getName());
     }
 }
 
-class SalaryComp implements Comparator<Person>{
+class SalaryComp implements Comparator<Person> {
 
     @Override
     public int compare(Person o1, Person o2) {
         return Double.compare(o1.getSalary(), o2.getSalary());
     }
 }
+
+class ExThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("exthread: " + Thread.currentThread().getId());
+    }
+}
+
+class RunThread implements Runnable {
+
+    @Override
+    public void run() {
+        System.out.println("runthread: " + Thread.currentThread().getId());
+    }
+}
+
+class TSingleton {
+    private static volatile TSingleton instance;
+
+    private TSingleton() {
+
+    }
+
+    public static TSingleton getInstance() {
+        if (instance == null) {
+            synchronized (TSingleton.class) {
+                if (instance == null) {
+                    instance = new TSingleton();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void doSomething() {
+
+    }
+}
+
+
