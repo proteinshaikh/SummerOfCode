@@ -15,5 +15,12 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>me.o-r-e</groupId>
+            <artifactId>k-poi-ext</artifactId>
+            <version>0.0.3-k1.3.50</version>
+        </dependency>
+    </dependencies>
 
 </project>

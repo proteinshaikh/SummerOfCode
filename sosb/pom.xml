@@ -111,7 +111,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>me.o-r-e</groupId>
+            <artifactId>k-poi-ext</artifactId>
+            <version>0.0.3-k1.3.50</version>
+        </dependency>
+    </dependencies>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

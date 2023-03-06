@@ -22,9 +22,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SummerOfCode" options="-parameters" />
       <module name="junit" options="-parameters" />
-      <module name="sosb" options="-parameters" />
+      <module name="sosb" options="" />
       <module name="spring-cloud-circuit-breaker" options="-parameters" />
-      <module name="spring-kafka" options="-parameters" />
+      <module name="spring-kafka" options="" />
     </option>
   </component>
 </project>

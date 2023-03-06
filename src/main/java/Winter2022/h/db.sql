@@ -14,3 +14,8 @@ where rank =5;
 
 --The DENSE_RANK() function is similar to the RANK() function, but it does not skip rank values for ties.
 --This means that if there are ties for a particular rank value, the next rank value will be incremented by the number of tied rows, instead of just 1.
+
+--group by
+SELECT city, COUNT(*)
+FROM table_name
+GROUP BY city;
