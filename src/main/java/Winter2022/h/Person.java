@@ -95,9 +95,13 @@ public class Person implements Comparable<Person> {
         System.out.println("-------------testing sort student id reverse using streams------------------------");
 
         for (Person p : list.stream().sorted(Comparator.comparingInt(Person::getId).reversed().thenComparing(Person::getName)).collect(Collectors.toList())) {
-            System.out.println(p.getId() + p.getName() + p.getSalary());
+            System.out.println(p.getId() + p.getName() + " " + p.getSalary());
         }
-        System.out.println("-------------testing sort players by goals------------------------");
+        System.out.println("-------------testing sort players by salary/goals------------------------");
+        List<Map.Entry<Integer, Person>> sortBySalary = map.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList());
+        for (Map.Entry<Integer, Person> p : sortBySalary) {
+            System.out.println(p.getKey() + " " + p.getValue().getId());
+        }
         System.out.println("-------------testing foreach method in hashmap- new java 8------------------------");
         map.forEach((key, value) -> System.out.println(key + " " + value.id + " " + value.name + " " + value.salary));
         System.out.println("-------------testing comparables------------------------");

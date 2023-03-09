@@ -37,19 +37,15 @@ public class ApachePOI {
                 }
             }
         }
-        FileOutputStream output = new FileOutputStream(new File("output.xlsx"));
+        FileOutputStream output = new FileOutputStream("output.xlsx");
         workbook.write(output);
 
         output.close();
         input.close();
-        ;
         workbook.close();
 
     }
 
 
 }
-
-
-    }
 
