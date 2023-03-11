@@ -1,5 +1,6 @@
 package Winter2022;
 
+/*A leader in an array is an element that is larger than all elements to its right*/
 public class LeaderArray {
     public static void main(String[] args) {
 
