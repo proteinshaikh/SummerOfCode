@@ -1,6 +1,10 @@
 package Winter2022.h;
 
 import Winter2022.g.Employee;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,59 +14,21 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Person implements Comparable<Person> {
 
     private int id;
     private String name;
     private double salary;
 
-    public Person(int id, String name, double salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
+    private String department;
+
+    public Person(int i, String zee, int i1) {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-        if (!(o instanceof Person)) return false;
-        Person p = (Person) o;
-        return name.equals(p.name) && (id == p.id) && (Double.compare(salary, p.salary) == 0);
-    }
-
-    @Override
-    public int hashCode() {
-        int res = 17;
-        res = 31 * res + id;
-        res = 31 * res + ((name != null) ? name.hashCode() : 0);
-        return res;
-    }
 
     public static void main(String[] args) {
 
