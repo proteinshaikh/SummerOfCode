@@ -7,25 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SummerOfCode" />
         <module name="tomcat" />
         <module name="PhotoAppDiscoveryService" />
+        <module name="SummerOfCode" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="junit" target="1.8" />
-      <module name="sosb" target="1.8" />
-      <module name="spring-cloud-circuit-breaker" target="1.8" />
-      <module name="spring-kafka" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SummerOfCode" options="-parameters" />
-      <module name="junit" options="-parameters" />
-      <module name="sosb" options="" />
-      <module name="spring-cloud-circuit-breaker" options="-parameters" />
-      <module name="spring-kafka" options="" />
     </option>
   </component>
 </project>
