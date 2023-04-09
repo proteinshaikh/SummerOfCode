@@ -1,6 +1,7 @@
 package Winter2022.comparator4;
 
-import org.omg.CosNaming.NamingContextPackage.NotFound;
+
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.validation.constraints.Min;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TestMinisterComparator {
-    public static void main(String[] args) throws NotFound {
+    public static void main(String[] args) throws HttpClientErrorException.NotFound {
         List<Minister> ministers = new ArrayList<>();
 
         ministers.add(new Minister(1, "zee"));
@@ -30,7 +31,7 @@ public class TestMinisterComparator {
         }
         System.out.println("max id");
         //find max id
-        System.out.println(ministers.stream().mapToInt(x -> x.getId()).max().orElseThrow(NotFound::new));
+        System.out.println(ministers.stream().mapToInt(x -> x.getId()).max().orElseThrow(NoClassDefFoundError::new));
 
 
     }

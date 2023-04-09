@@ -1,6 +1,5 @@
 package Winter2022.builderpattern;
 
-import javax.jws.soap.SOAPBinding;
 
 class User {
 
