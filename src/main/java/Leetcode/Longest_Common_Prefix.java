@@ -1,6 +1,5 @@
 package Leetcode;
 
-import org.jetbrains.annotations.NotNull;
 
 
 // url: https://leetcode.com/problems/longest-common-prefix/
@@ -10,7 +9,7 @@ public class Longest_Common_Prefix {
         System.out.println(longestCommonPrefix.longestCommonPrefix(new String[]{"flower", "flow", "flight"}));
     }
 
-    public String longestCommonPrefix(String @NotNull [] strs) {
+    public String longestCommonPrefix(String [] strs) {
         if (strs.length == 0) return "";
         String prefix = strs[0];
         for (int i = 0; i < strs.length; i++)

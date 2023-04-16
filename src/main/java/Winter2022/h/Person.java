@@ -1,6 +1,5 @@
 package Winter2022.h;
 
-import Winter2022.g.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +10,6 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 @Data
@@ -26,9 +24,12 @@ public class Person implements Comparable<Person> {
 
     private String department;
 
-    public Person(int i, String zee, int i1) {
-    }
 
+    public Person(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
 
     public static void main(String[] args) {
 
