@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- * java program to sort millions of data from database.
+ * java program to sort millions of data from database in batches.
  * This class demonstrates reading data from a MySQL database and sorting it alphabetically by name.
  * The sorted data is then updated in the database using batch updates.
  */
@@ -23,7 +23,7 @@ public class ReadDBDataSort {
         sortData();
     }
 
-    private static final int BATCH_SIZE = 100;
+    private static final int BATCH_SIZE = 100; //You can experiment with different batch sizes to find the optimal value for your specific case
 
     private static void sortData() {
         try {
