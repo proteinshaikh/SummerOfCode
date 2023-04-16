@@ -13,6 +13,6 @@ public class RemoveDuplicates {
     }
 
     static List<String> removeDuplicates(List<String> strings) {
-        return strings.stream().distinct().collect(Collectors.toList());
+        return strings.stream().sorted().distinct().collect(Collectors.toList());
     }
 }
