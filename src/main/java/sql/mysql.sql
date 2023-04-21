@@ -1,5 +1,5 @@
 use soc;create table employee(id int not null auto_increment, name varchar(50) not null, salary int, primary key (id));
-
+show tables;
 alter table employee modify column age int default 0;
 
 update employee set age =0 where age is null and id > 0;
@@ -8,7 +8,9 @@ update employee set age=floor(rand() * 60) +18 where id >0;
 
 insert into employee (name, salary) values ('zeeshan', 1000), ('shaikh', 2000);
 delete from employee where id in (2,3,4);
-
+Select * from employee where name='Aaron Mitchell';
+show index from employee where Column_name = 'name';
+create index idx_name on employee (name);
 select * from employee;
 select count(*) from employee;
 create database soc;
