@@ -15,7 +15,6 @@ public class FirstNonRepeatedChar {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
-
         for (char c : str.toCharArray()) {
             if (map.get(c) == 1) {
                 return c;
