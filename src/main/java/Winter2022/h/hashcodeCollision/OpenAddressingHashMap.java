@@ -73,7 +73,7 @@ public class OpenAddressingHashMap<K, V> {
         int i = hash;
 
         do {
-            if (table[i] != null || table[i].key.equals(key)) {
+            if (table[i] != null && table[i].key.equals(key)) {
                 return table[i].value;
             }
 
