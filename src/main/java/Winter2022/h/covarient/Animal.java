@@ -1,6 +1,5 @@
 package Winter2022.h.covarient;
 
-import org.apache.poi.ss.formula.functions.T;
 
 class Animal {
 
@@ -17,11 +16,10 @@ class Tiger extends Animal {
 
 }
 
-class TestCovarient {
+class TestCovariant {
     public static void main(String[] args) {
-        Animal animal = new Tiger();
-        Tiger tiger = (Tiger) animal;
-        System.out.println(tiger.getAnimal());
+        Tiger animal = new Tiger();
+        System.out.println(animal.getAnimal());
         System.out.println(animal.getAnimal());
     }
 }

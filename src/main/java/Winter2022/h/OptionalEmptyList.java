@@ -11,12 +11,11 @@ public class OptionalEmptyList {
 
 
         // Using Optional with an empty list
-        Optional<List<String>> optionalList = Optional.of(list);
-        System.out.println("Optional List = " + optionalList);
+        System.out.println("Optional List = " + Optional.of(list));
 
 
         // Accessing elements of the Optional list
-        List<String> mylist = optionalList.orElse(new ArrayList<>());
+        List<String> mylist = Optional.of(list).orElse(null);
 
 
         // Adding elements to the Optional list

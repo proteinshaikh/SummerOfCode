@@ -8,16 +8,29 @@ public class StreamsHub {
 
     //total salary of all employees whose age is greater than 30
     static double getTotalSalaryByAge(List<Person> persons, int age) {
-        return persons.stream().filter(e -> e.getId() > 30)
-                .mapToDouble(Person::getSalary)
+        return persons.stream()
+                .filter(
+                        e -> e.getId() > 30
+                )
+                .mapToDouble(
+                        Person::getSalary
+                )
                 .sum();
     }
 
 
     //maximum salary of all employees in a department
-    static double getMaxSalaryByDept(List<Person> persons, String dept) {
-        return persons.stream().filter(e -> e.getDepartment().equals(dept))
-                .mapToDouble(Person::getSalary)
+    static double getMaxSalaryByDept(
+            List<Person> persons,
+            String dept
+    ) {
+        return persons.stream()
+                .filter(
+                        e -> e.getDepartment().equals(dept)
+                )
+                .mapToDouble(
+                        Person::getSalary
+                )
                 .max()
                 .orElse(Double.NaN);
     }
