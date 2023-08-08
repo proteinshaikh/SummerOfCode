@@ -8,14 +8,14 @@ public class CommonElements {
 
     static List<Integer> getCommonElements(int[] arr1, int[] arr2) {
         Set<Integer> set1 = new HashSet<>();
-        for (int i = 0; i < arr1.length; i++) {
-            set1.add(arr1[i]);
+        for (int k : arr1) {
+            set1.add(k);
         }
 
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < arr2.length; i++) {
-            if (set1.contains(arr2[i])) {
-                list.add(arr2[i]);
+        for (int j : arr2) {
+            if (set1.contains(j)) {
+                list.add(j);
             }
         }
         return list;

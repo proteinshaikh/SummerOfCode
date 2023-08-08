@@ -22,7 +22,6 @@ public class ReverseAlphabets {
             resultBuilder.append("  ");
         }
 
-        String resultString = resultBuilder.toString().trim();
-        return resultString;
+        return resultBuilder.toString().trim();
     }
 }

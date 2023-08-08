@@ -17,8 +17,6 @@ public class StringRev {
             tempChars[i] = chars[len - i - 1];
         }
 
-        String res = new String(tempChars);
-
-        return res;
+        return new String(tempChars);
     }
 }
