@@ -11,11 +11,11 @@ public class MostCommonElement {
     static int getMostCommon(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            if (map.containsKey(arr[i])) {
-                map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        for (int j : arr) {
+            if (map.containsKey(j)) {
+                map.put(j, map.getOrDefault(j, 0) + 1);
             } else {
-                map.put(arr[i], 1);
+                map.put(j, 1);
             }
         }
 
