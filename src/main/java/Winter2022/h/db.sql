@@ -19,3 +19,5 @@ where rank =5;
 SELECT city, COUNT(*)
 FROM table_name
 GROUP BY city;
+
+select * from employees where salary = (select distinct salary from employees order by salary desc limit 1,2);
