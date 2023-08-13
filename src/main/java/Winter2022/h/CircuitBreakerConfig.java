@@ -18,32 +18,19 @@ public class CircuitBreakerConfig {
 
     @Bean
     public Customizer<Resilience4JCircuitBreakerFactory> defaultCustomizer() {
-        return factory -> factory.configureDefault(id -> new Resilience4JConfigBuilder(id)
-                .timeLimiterConfig(TimeLimiterConfig.custom().timeoutDuration(Duration.ofSeconds(4)).build())
-                .circuitBreakerConfig(io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.custom()
-                        .slidingWindowSize(10)
-                        .failureRateThreshold(50)
-                        .build())
-                .build());
+        return factory -> factory.configureDefault(
+                id -> new Resilience4JConfigBuilder(id)
+                        .timeLimiterConfig(
+                                TimeLimiterConfig.custom().timeoutDuration(
+                                                Duration.ofSeconds(4))
+                                        .build()
+                        )
+                        .circuitBreakerConfig(
+                                io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.custom()
+                                        .slidingWindowSize(10)
+                                        .failureRateThreshold(50)
+                                        .build())
+                        .build());
     }
-
 }
 
-@RestController
-public class ServiceController {
-
-    @CircuitBreaker(name = "backendA")
-    @Retry(name = "backendA")
-    public String callServiceA() {
-        // Call service A
-        return null;
-    }
-
-    @CircuitBreaker(name = "backendB")
-    @Retry(name = "backendB")
-    public String callServiceB() {
-        // Call service B
-        return null;
-    }
-
-}

@@ -1,8 +1,8 @@
 package Winter2022.d;
 
-public class FindNumOptimized {//works for sorted arfrays only
+public class FindNumOptimized {//works for sorted arrays only
     public static void main(String[] args) {
-        System.out.println(findNum(new int[]{00, 10, 20, 30, 40, 50}, 30));
+        System.out.println(findNum(new int[]{0, 10, 20, 30, 40, 50}, 30));
     }
 
     static boolean findNum(int[] arr, int target) {
