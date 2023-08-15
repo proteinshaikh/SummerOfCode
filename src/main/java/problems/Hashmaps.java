@@ -1,6 +1,8 @@
 package problems;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Hashmaps {
     public static void main(String[] args) {

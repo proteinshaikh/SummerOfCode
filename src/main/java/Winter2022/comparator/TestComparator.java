@@ -1,7 +1,6 @@
 package Winter2022.comparator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TestComparator {

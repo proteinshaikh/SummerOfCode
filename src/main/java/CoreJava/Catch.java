@@ -1,6 +1,5 @@
 package CoreJava;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 public class Catch {

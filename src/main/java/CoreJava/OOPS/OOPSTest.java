@@ -1,8 +1,6 @@
 package CoreJava.OOPS;
 
 
-import Java8.ParallelStreams;
-
 import java.util.ArrayList;
 import java.util.List;
 

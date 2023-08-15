@@ -1,7 +1,5 @@
 package Winter2022.comparable3;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Player implements Comparable<Player>{
 
     private String name;

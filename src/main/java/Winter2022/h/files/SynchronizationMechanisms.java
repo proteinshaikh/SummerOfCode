@@ -1,7 +1,5 @@
 package Winter2022.h.files;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;

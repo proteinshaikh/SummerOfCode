@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-//Java 9
 import static java.nio.file.Files.lines;
 
 public class Files {

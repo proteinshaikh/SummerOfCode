@@ -2,7 +2,6 @@ package Winter2022.h.lambda;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TestLambda2 {

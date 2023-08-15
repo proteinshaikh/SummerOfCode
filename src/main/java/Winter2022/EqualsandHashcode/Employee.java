@@ -1,7 +1,5 @@
 package Winter2022.EqualsandHashcode;
 
-import boot.Person;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;

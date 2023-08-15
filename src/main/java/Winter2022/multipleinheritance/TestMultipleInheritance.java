@@ -1,7 +1,5 @@
 package Winter2022.multipleinheritance;
 
-import Winter2022.Threads.TestRunnableInterface;
-
 public class TestMultipleInheritance implements Father, Mother {
     @Override
     public String son() {

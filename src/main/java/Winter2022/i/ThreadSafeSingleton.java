@@ -1,7 +1,5 @@
 package Winter2022.i;
 
-import kotlin.jvm.Synchronized;
-
 class ThreadSafeSingleton {
 
     private static volatile ThreadSafeSingleton instance;

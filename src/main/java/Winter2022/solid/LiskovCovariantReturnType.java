@@ -1,7 +1,5 @@
 package Winter2022.solid;
 
-import java.util.Objects;
-
 public class LiskovCovariantReturnType {
     public static void main(String[] args) {
         IntegerProducer integerProducer = new IntegerProducer();

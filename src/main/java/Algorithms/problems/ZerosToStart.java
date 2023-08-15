@@ -1,8 +1,5 @@
 package Algorithms.problems;
 
-import CoreJava.Collections;
-import Java8.StreamOf;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

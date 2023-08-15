@@ -4,7 +4,6 @@ package Algorithms.problems;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /*
  * input: 8
