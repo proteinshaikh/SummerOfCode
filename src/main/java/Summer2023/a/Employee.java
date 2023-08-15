@@ -7,25 +7,63 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Data
 @Builder
-public class Employee {
+//@EqualsAndHashCode //TODO when using lombok use this
+public class Employee implements Comparable<Employee> {
 
     private final int id;
     private final String name;
     private final BigDecimal salary;
 
+    public static final Comparator<Employee> SALARY_COMPARATOR = Comparator.comparing(Employee::getSalary);
+    public static final Comparator<Employee> NAME_COMPARATOR = Comparator.comparing(Employee::getName);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee e = (Employee) o;
+        return id == e.getId() &&
+                Objects.equals(name, e.getName()) &&
+                Objects.equals(salary, e.getSalary());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, salary);
+    }
+
+    @Override
+    public int compareTo(Employee e) {
+        int salaryComparison = this.salary.compareTo(
+                e.getSalary()
+        );
+        if (salaryComparison != 0) {
+            return salaryComparison;
+        }
+        return this.getName().compareTo(e.getName());
+    }
+
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-                new Employee(1, "zeeshan", BigDecimal.valueOf(1000)),
-                new Employee(2, "akram", BigDecimal.valueOf(2000)),
-                new Employee(3, "shaikh", BigDecimal.valueOf(3000)),
-                new Employee(3, "shaikh", BigDecimal.valueOf(3000))
+                new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
+                new Employee(20, "akram", BigDecimal.valueOf(2000)),
+                new Employee(30, "shaikh", BigDecimal.valueOf(5000)),
+                new Employee(40, "test", BigDecimal.valueOf(3000))
         );
+
+        Map<Integer, Employee> map = new HashMap<>();
+        map.put(1, new Employee(10, "zeeshan", BigDecimal.valueOf(1000)));
+        map.put(2, new Employee(20, "akram", BigDecimal.valueOf(2000)));
+        map.put(3, new Employee(30, "shaikh", BigDecimal.valueOf(5000)));
+        map.put(4, new Employee(40, "test", BigDecimal.valueOf(3000)));
 
         System.out.println("distinct id using streams");
         for (Employee e : employees.stream().distinct().sorted(Comparator.comparingInt(Employee::getId)).toList()) {
@@ -49,12 +87,35 @@ public class Employee {
         System.out.println("max salary is : " + max.get());
 
         System.out.println("sort employee id reverse using streams");
+        for (Employee e : employees.stream().sorted(Comparator.comparingInt(Employee::getId).reversed()).toList()) {
+            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
+        }
+
         System.out.println("sort employees by salary");
+
+        for (Employee e : employees.stream().sorted(Comparator.comparing(Employee::getSalary)).toList()) {
+            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
+        }
+
         System.out.println("foreach method in hashmap new java 8");
-        System.out.println("comparable");
+        map.forEach((key, value) -> System.out.println(key + " " + value.getId() + " " + value.getName() + " " + value.getSalary()));
+
+        System.out.println("comparable"); //DONE
+
         System.out.println("comparators name");
-        System.out.println("comparators id");
-        System.out.println("equals and hashcode");
+        employees.sort(Employee.NAME_COMPARATOR);
+        for (Employee e : employees) {
+            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
+        }
+
+        System.out.println("comparators salary");
+        employees.sort(Employee.SALARY_COMPARATOR);
+        for (Employee e : employees) {
+            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
+        }
+
+        System.out.println("equals and hashcode"); //DONE
+
         System.out.println("ExThread");
         System.out.println("Threads Runnable");
         System.out.println("thread safe singleton using executor");

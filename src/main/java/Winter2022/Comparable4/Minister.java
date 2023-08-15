@@ -36,7 +36,6 @@ public class Minister implements Comparable<Minister> {
         if (this == o) return true;
         if (o == null) return false;
         if (getClass() != o.getClass()) return false;
-        if (!(o instanceof Minister)) return false;
         Minister m = (Minister) o;
         return m.getName().equals(this.getName()) || m.getId() == this.getId();
     }
@@ -58,11 +57,7 @@ public class Minister implements Comparable<Minister> {
         map.put(m1, 1);
         map.put(m2, 2);
 
-        if (m1.hashCode() == m2.hashCode()) {
-            System.out.println(true);
-        } else {
-            System.out.println(false);
-        }
+        System.out.println(m1.hashCode() == m2.hashCode());
 
     }
 
