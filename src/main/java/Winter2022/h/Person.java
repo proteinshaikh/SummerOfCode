@@ -105,7 +105,7 @@ public class Person implements Comparable<Person> {
         List<Integer> list = strings.stream()
                 .flatMap(x -> Arrays.stream(x.split(",")))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
 
         for (int a : list) {
             System.out.print(a + " ");
@@ -117,7 +117,7 @@ public class Person implements Comparable<Person> {
 
         List<Character> characters = stringList.stream()
                 .flatMap(word -> word.chars().mapToObj(c -> (char) c))
-                .collect(Collectors.toList());
+                .toList();
 
         for (char a : characters) {
             System.out.print(a + " ");

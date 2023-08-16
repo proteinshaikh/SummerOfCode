@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -150,6 +152,13 @@ public class Employee implements Comparable<Employee> {
         return Math.toIntExact(Arrays.stream(strings).count());
     }
 
+    static void countWordsIgnoreCase(String sentence) {
+
+        Map<String, Long> map = Arrays.stream(sentence.toLowerCase().split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        map.forEach((key, value) -> System.out.println(key + " " + value));
+    }
+
 
     static int factorial(int num) {
         if (num <= 1) return 1;
@@ -194,6 +203,10 @@ public class Employee implements Comparable<Employee> {
             right--;
         }
         return new String(chars);
+    }
+
+    interface Greetings {
+        void sayHello(String name);
     }
 
     public static void main(String[] args) {
@@ -287,6 +300,8 @@ public class Employee implements Comparable<Employee> {
         System.out.println(Employee.countWords("please count these words"));
         System.out.println(Employee.countWordsUsingStreams("please count these words"));
 
+        System.out.println("Count words using streams ignore case");
+        Employee.countWordsIgnoreCase("please count these words Words");
         System.out.println("factorial using recursion");
         System.out.println(Employee.factorial(5));
 
@@ -302,12 +317,25 @@ public class Employee implements Comparable<Employee> {
         System.out.println();
 
         System.out.println("flatmap");
-
+        int[][] ints = new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}};
+        Arrays.stream(ints).flatMapToInt(Arrays::stream).forEach(System.out::println);
 
         System.out.println("lambda exp");
+        Greetings greetings = name1 -> System.out.println("hello " + name1);
+        greetings.sayHello("zeeshan");
+
         System.out.println("delete/merge hashmap entries");
+        map.remove(1);
+        map.forEach((k, v) -> System.out.println(k + " " + v));
+
         System.out.println("iterate hashmap ");
+
+        for (Map.Entry<Integer, Employee> employeeEntry : map.entrySet()) {
+            System.out.println(employeeEntry.getKey() + " " + employeeEntry.getValue());
+        }
+
         System.out.println("find common elements between 2 arrays");
+
         System.out.println("apache poi");
         System.out.println("count the number of occurrences of each alphabet in a sentence using streams");
         System.out.println("3rd highest salary sql");
@@ -337,6 +365,12 @@ public class Employee implements Comparable<Employee> {
         System.out.println("read db data sort");
         System.out.println("streams hub");
         System.out.println("compress string using map");
+        System.out.println("Maximum length of contiguous subarray with sum 0");
+        System.out.println("max number in list using streams");
+
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        Optional<Integer> maxNum = list.stream().max(Integer::compare);
+        maxNum.ifPresent(System.out::println);
 
     }
 }

@@ -31,7 +31,6 @@ public class IterateHashmap {
         //iterate over values
         try {
             for (String val : map.values()) {
-                String str = val;
                 System.out.println(val);
             }
         } catch (Exception e) {
