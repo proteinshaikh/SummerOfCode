@@ -179,6 +179,23 @@ public class Employee implements Comparable<Employee> {
         return temp;
     }
 
+    static String reverseStringWithoutTemp(String sentence) {
+        char[] chars = sentence.toCharArray();
+
+        int left = 0;
+        int right = chars.length - 1;
+
+        while (left < right) {
+            chars[left] = (char) (chars[left] ^ chars[right]);
+            chars[right] = (char) (chars[left] ^ chars[right]);
+            chars[left] = (char) (chars[left] ^ chars[right]);
+
+            left++;
+            right--;
+        }
+        return new String(chars);
+    }
+
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
                 new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
@@ -302,6 +319,8 @@ public class Employee implements Comparable<Employee> {
         System.out.println("sort millions of data from database in batches (know)");
         System.out.println("remove duplicates from list");
         System.out.println("reverse alphabets");
+        System.out.println("alphabets reverse without temp variable");
+        System.out.println(reverseStringWithoutTemp("reverse this without temp!"));
         System.out.println("scope of beans");
         System.out.println("get 2nd largest num from list");
         System.out.println("total salary of all employees whose age is greater than 30");
