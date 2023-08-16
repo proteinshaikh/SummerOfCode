@@ -51,6 +51,78 @@ public class Employee implements Comparable<Employee> {
         return this.getName().compareTo(e.getName());
     }
 
+    static class ExThread extends Thread {
+        @Override
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                System.out.print(i + " ");
+            }
+            System.out.println("Exthread: " + Thread.currentThread().getId());
+        }
+    }
+
+    static class RunThread implements Runnable {
+        @Override
+        public void run() {
+            for (int i = 0; i < 5; i++) {
+                System.out.print(i + " ");
+            }
+            System.out.println("RunThread: " + Thread.currentThread().getId());
+        }
+    }
+
+    static class MySingleton {
+        private static volatile MySingleton instance;
+
+        private MySingleton() {
+
+        }
+
+        public static MySingleton getInstance() {
+            if (instance == null) {
+                synchronized (MySingleton.class) {
+                    if (instance == null) {
+                        instance = new MySingleton();
+                    }
+                }
+            }
+            return instance;
+        }
+
+        public void doSomething() {
+            System.out.println("something done!");
+        }
+
+    }
+
+    /*
+    Bill Pugh Singleton (Using Inner Static Helper Class)
+    */
+
+    static class MySingleton2 {
+
+        private MySingleton2() {
+        }
+
+        public static MySingleton2 getInstance() {
+            return SingletonHelper.INSTANCE;
+        }
+
+        private static class SingletonHelper {
+            private static final MySingleton2 INSTANCE = new MySingleton2();
+        }
+    }
+
+
+    //Singleton using enum
+    public enum Singleton {
+        INSTANCE;
+
+        public void doSomething() {
+            System.out.println("something done by singleton enum!");
+        }
+    }
+
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
                 new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
@@ -117,9 +189,20 @@ public class Employee implements Comparable<Employee> {
         System.out.println("equals and hashcode"); //DONE
 
         System.out.println("ExThread");
+        Thread t1 = new ExThread();
+        Thread t2 = new ExThread();
+        t1.start();
+        t2.start();
+
         System.out.println("Threads Runnable");
-        System.out.println("thread safe singleton using executor");
-        System.out.println("builder");
+        Thread r1 = new Thread(new RunThread());
+        Thread r2 = new Thread(new RunThread());
+        r1.start();
+        r2.start();
+
+        System.out.println("thread safe singleton using executor"); //DONE
+
+        System.out.println("builder"); //DONE
         System.out.println("factory");
         System.out.println("two sum");
         System.out.println("count words");
@@ -128,6 +211,7 @@ public class Employee implements Comparable<Employee> {
         System.out.println("flatmap");
         System.out.println("lambda exp");
         System.out.println("delete/merge hashmap entries");
+        System.out.println("iterate hashmap ");
         System.out.println("find common elements between 2 arrays");
         System.out.println("apache poi");
         System.out.println("count the number of occurrences of each alphabet in a sentence using streams");
