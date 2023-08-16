@@ -32,6 +32,24 @@
             <artifactId>spring-cloud-circuitbreaker-resilience4j</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.7.0</version>
+            <scope>test</scope>
+        </dependency>
 
 
         <dependency>
@@ -150,6 +168,61 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>4.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>4.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>4.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>4.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>4.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-spring-web-servlet-interceptor</artifactId>
+            <version>3.7.0</version>
         </dependency>
 
     </dependencies>
