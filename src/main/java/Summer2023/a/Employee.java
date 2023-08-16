@@ -123,6 +123,62 @@ public class Employee implements Comparable<Employee> {
         }
     }
 
+    static int[] twoSum(int[] arr, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            int complement = target - arr[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
+            }
+            map.put(arr[i], i);
+        }
+        return null;
+    }
+
+    static int countWords(String sentence) {
+        String[] strings = sentence.split(" ");
+        int count = 0;
+        for (String s : strings) {
+            count++;
+        }
+        return count;
+    }
+
+    static int countWordsUsingStreams(String sentence) {
+        String[] strings = sentence.split(" ");
+        return Math.toIntExact(Arrays.stream(strings).count());
+    }
+
+
+    static int factorial(int num) {
+        if (num <= 1) return 1;
+
+        return num * factorial(num - 1);
+    }
+
+    //rotate left
+    static int[] rotateArrayLeft(int[] arr, int d) {
+        int length = arr.length;
+        int[] temp = new int[length];
+
+        for (int i = 0; i < arr.length; i++) {
+            temp[i] = arr[(i + d) % arr.length];
+        }
+        return temp;
+    }
+
+    //rotate right
+    static int[] rotateArrayRight(int[] arr, int d) {
+        int length = arr.length;
+        int[] temp = new int[length];
+
+        for (int i = 0; i < arr.length; i++) {
+            temp[(i + d) % length] = arr[i];
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
                 new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
@@ -191,24 +247,46 @@ public class Employee implements Comparable<Employee> {
         System.out.println("ExThread");
         Thread t1 = new ExThread();
         Thread t2 = new ExThread();
-        t1.start();
-        t2.start();
+        //t1.start(); //TODO uncomment for testing
+        //t2.start(); //TODO uncomment for testing
 
         System.out.println("Threads Runnable");
         Thread r1 = new Thread(new RunThread());
         Thread r2 = new Thread(new RunThread());
-        r1.start();
-        r2.start();
+        //r1.start(); //TODO uncomment for testing
+        //r2.start();//TODO uncomment for testing
 
         System.out.println("thread safe singleton using executor"); //DONE
 
         System.out.println("builder"); //DONE
-        System.out.println("factory");
+        System.out.println("factory"); //DONE
         System.out.println("two sum");
-        System.out.println("count words");
+        for (int a : Objects.requireNonNull(Employee.twoSum(new int[]{1, 2, 3, 4, 5}, 5))) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
+
+        System.out.println("count words using streams");
+        System.out.println(Employee.countWords("please count these words"));
+        System.out.println(Employee.countWordsUsingStreams("please count these words"));
+
         System.out.println("factorial using recursion");
-        System.out.println("rotate array");
+        System.out.println(Employee.factorial(5));
+
+        System.out.println("rotate array left");
+        for (int a : Employee.rotateArrayLeft(new int[]{1, 2, 3, 4, 5}, 2)) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
+        System.out.println("rotate array right");
+        for (int a : Employee.rotateArrayRight(new int[]{1, 2, 3, 4, 5}, 2)) {
+            System.out.print(a + " ");
+        }
+        System.out.println();
+
         System.out.println("flatmap");
+
+
         System.out.println("lambda exp");
         System.out.println("delete/merge hashmap entries");
         System.out.println("iterate hashmap ");
