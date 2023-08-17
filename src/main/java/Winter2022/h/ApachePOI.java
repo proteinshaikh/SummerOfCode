@@ -18,7 +18,7 @@ import java.io.IOException;
 public class ApachePOI {
 
     static void excelOPS() throws IOException {
-        FileInputStream input = new FileInputStream(new File("input.xlsx"));
+        FileInputStream input = new FileInputStream("input.xlsx");
         Workbook workbook = WorkbookFactory.create(input);
 
         Sheet inputSheet = workbook.getSheet("inputsheet");
