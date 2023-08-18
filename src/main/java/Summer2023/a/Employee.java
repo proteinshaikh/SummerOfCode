@@ -394,6 +394,7 @@ public class Employee implements Comparable<Employee> {
         map.forEach((k, v) -> System.out.println(k + " " + v));
 
     }
+
     static void countAlphabetsUsingStreams(String string) {
 
         Map<Character, Long> map = string.chars()
