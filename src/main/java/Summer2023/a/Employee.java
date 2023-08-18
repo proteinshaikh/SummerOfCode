@@ -369,7 +369,7 @@ public class Employee implements Comparable<Employee> {
         System.out.println("read file in sync");
         System.out.println("circuit breaker config");
         System.out.println("prevent clone");
-        System.out.println("covarient return types");
+        System.out.println("covariant return types");
         System.out.println("poi");
         System.out.println("count alphabets using streams");
         System.out.println("abstract enums");
