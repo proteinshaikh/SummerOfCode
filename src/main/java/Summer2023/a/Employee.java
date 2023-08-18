@@ -1,5 +1,6 @@
 package Summer2023.a;
 
+import Algorithms.problems.Inheritance.Zebra;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.poi.ss.usermodel.Row;
@@ -7,8 +8,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -359,23 +363,129 @@ public class Employee implements Comparable<Employee> {
                 .collect(Collectors.joining());
     }
 
-    public static void main(String[] args) throws IOException {
-        System.out.println("scope of beans");
-        System.out.println("get 2nd largest num from list");
-        System.out.println("total salary of all employees whose age is greater than 30");
-        System.out.println("maximum salary of all employees in a department");
-        System.out.println("find the first five even numbers greater than 10");
-        System.out.println("String reverse");
-        System.out.println("read file in sync");
-        System.out.println("circuit breaker config");
-        System.out.println("prevent clone");
-        System.out.println("covariant return types");
-        System.out.println("poi");
+    static int secondLargest(List<Integer> list) {
+
+        return list.stream()
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .skip(1)
+                .findFirst()
+                .orElse(-1);
+    }
+
+    static void countAlphabets(String string) {
+        char[] chars = string.toCharArray();
+        List<Character> list = new ArrayList<>();
+
+        for (char c : chars) {
+            list.add(c);
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (char a : list) {
+            if (map.containsKey(a)) {
+                map.put(a, map.getOrDefault(a, 0) + 1);
+            } else {
+                map.put(a, 1);
+            }
+        }
+
+        map.forEach((k, v) -> System.out.println(k + " " + v));
+
+    }
+    static void countAlphabetsUsingStreams(String string) {
+
+        Map<Character, Long> map = string.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        map.forEach((k, v) -> System.out.println(k + " " + v));
+
+    }
+
+
+    static String stringReverse(String string) {
+
         System.out.println("count alphabets using streams");
+
+        Employee.countAlphabetsUsingStreams("kashgdkjahdkjahskjfaghkdgashgdjsdfsfsddgsgsgsgsh");
+
+        String res = IntStream.rangeClosed(1, string.length())
+                .mapToObj(x -> string.charAt(string.length() - x))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        return res;
+    }
+
+    public static void main(String[] args) throws IOException {
+        List<Employee> employees = Arrays.asList(
+                new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
+                new Employee(20, "akram", BigDecimal.valueOf(2000)),
+                new Employee(30, "shaikh", BigDecimal.valueOf(5000)),
+                new Employee(40, "test", BigDecimal.valueOf(3000))
+        );
+
+        Map<Integer, Employee> map = new HashMap<>();
+        map.put(1, new Employee(10, "zeeshan", BigDecimal.valueOf(1000)));
+        map.put(2, new Employee(20, "akram", BigDecimal.valueOf(2000)));
+        map.put(3, new Employee(30, "shaikh", BigDecimal.valueOf(5000)));
+        map.put(4, new Employee(40, "test", BigDecimal.valueOf(3000)));
+        System.out.println("scope of beans"); //DONE
+
+        System.out.println("get 2nd largest num from list");
+        System.out.println(Employee.secondLargest(Arrays.asList(1, 2, 3, 4, 5)));
+
+        System.out.println("total salary of all employees whose age is greater than 30");
+
+        System.out.println(employees.stream().filter(s -> s.getId() > 1).map(Employee::getSalary).reduce(BigDecimal.ZERO, BigDecimal::add));
+
+        System.out.println("maximum salary of all employees in a department");
+        // employees.stream().filter(x -> "DeptName".equalsIgnoreCase(x.getDept).map(Employee::getId).max(Comparator.naturalOrder())
+        System.out.println(employees.stream().map(Employee::getId).max(Comparator.naturalOrder()));
+
+        System.out.println("find the first five even numbers greater than 10");
+
+        for (int a : IntStream.iterate(12, n -> n + 2)
+                .limit(5)
+                .boxed()
+                .toList()) {
+            System.out.print(a + " ");
+        }
+
+        List<Integer> listNos = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        for (int a : listNos.stream().filter(x -> x % 2 == 0).toList()) {
+            System.out.print(a + " ");
+        }
+
+        System.out.println("String reverse");
+        System.out.println(Employee.stringReverse("zeeshan"));
+
+        System.out.println("read file in sync"); //TODo uncomment for code
+       /* try {
+            BufferedReader reader = new BufferedReader(new FileReader("file/path"));
+            while (reader.readLine() != null) {
+                String str = reader.readLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
+
+
+        System.out.println("circuit breaker config");
+
+
+        System.out.println("prevent clone");
+
+
+        System.out.println("covariant return types");
+
+
+        System.out.println("poi");
+
+
         System.out.println("abstract enums");
         System.out.println("read db data sort");
-        System.out.println("streams hub");
-        System.out.println("compress string using map");
         System.out.println("Maximum length of contiguous subarray with sum 0");
 
 
@@ -444,20 +554,6 @@ public class Employee implements Comparable<Employee> {
 
         System.out.println("alphabets reverse without temp variable");
         System.out.println(reverseStringWithoutTemp("reverse this without temp!"));
-
-
-        List<Employee> employees = Arrays.asList(
-                new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
-                new Employee(20, "akram", BigDecimal.valueOf(2000)),
-                new Employee(30, "shaikh", BigDecimal.valueOf(5000)),
-                new Employee(40, "test", BigDecimal.valueOf(3000))
-        );
-
-        Map<Integer, Employee> map = new HashMap<>();
-        map.put(1, new Employee(10, "zeeshan", BigDecimal.valueOf(1000)));
-        map.put(2, new Employee(20, "akram", BigDecimal.valueOf(2000)));
-        map.put(3, new Employee(30, "shaikh", BigDecimal.valueOf(5000)));
-        map.put(4, new Employee(40, "test", BigDecimal.valueOf(3000)));
 
         System.out.println("distinct id using streams");
         for (Employee e : employees.stream().distinct().sorted(Comparator.comparingInt(Employee::getId)).toList()) {

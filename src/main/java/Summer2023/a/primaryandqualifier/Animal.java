@@ -26,9 +26,10 @@ class Cat implements Animal {
 
 @Component
 class PetOwner {
+    @Autowired
     private Animal animal;
 
-    @Autowired
+
     public PetOwner(@Qualifier("cat") Animal animal) {
         this.animal = animal;
     }
