@@ -149,18 +149,9 @@ public class Employee implements Comparable<Employee> {
         return null;
     }
 
-    static int countWords(String sentence) {
-        String[] strings = sentence.split(" ");
-        int count = 0;
-        for (String s : strings) {
-            count++;
-        }
-        return count;
-    }
-
-    static int countWordsUsingStreams(String sentence) {
-        String[] strings = sentence.split(" ");
-        return Math.toIntExact(Arrays.stream(strings).count());
+    static void countWordsUsingStreams(String sentence) {
+        Map<String, Long> map = Arrays.stream(sentence.split(" ")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        map.forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
     static void countWordsIgnoreCase(String sentence) {
@@ -624,8 +615,7 @@ public class Employee implements Comparable<Employee> {
         System.out.println();
 
         System.out.println("count words using streams");
-        System.out.println(Employee.countWords("please count these words"));
-        System.out.println(Employee.countWordsUsingStreams("please count these words"));
+        Employee.countWordsUsingStreams("please count these words");
 
         System.out.println("Count words using streams ignore case");
         Employee.countWordsIgnoreCase("please count these words Words");

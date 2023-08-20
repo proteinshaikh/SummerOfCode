@@ -112,4 +112,20 @@ public class CommonStreamPatterns {
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
     }
+
+    /**
+     * Finds and returns a map of duplicated elements and their occurrences in the given array.
+     *
+     * @param arr The input array of integers.
+     * @return A map where the keys are the duplicated integers and the values are their counts.
+     */
+    public static Map<Integer, Long> findDuplicates(int[] arr) {
+        return Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
 }
