@@ -1,6 +1,5 @@
 package Summer2023.a;
 
-import Algorithms.problems.Inheritance.Zebra;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.poi.ss.usermodel.Row;
@@ -8,11 +7,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.BufferedReader;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -405,18 +401,12 @@ public class Employee implements Comparable<Employee> {
 
     }
 
-
     static String stringReverse(String string) {
 
-        System.out.println("count alphabets using streams");
-
-        Employee.countAlphabetsUsingStreams("kashgdkjahdkjahskjfaghkdgashgdjsdfsfsddgsgsgsgsh");
-
-        String res = IntStream.rangeClosed(1, string.length())
+        return IntStream.rangeClosed(1, string.length())
                 .mapToObj(x -> string.charAt(string.length() - x))
                 .map(String::valueOf)
                 .collect(Collectors.joining());
-        return res;
     }
 
     public static void main(String[] args) throws IOException {
@@ -433,6 +423,10 @@ public class Employee implements Comparable<Employee> {
         map.put(3, new Employee(30, "shaikh", BigDecimal.valueOf(5000)));
         map.put(4, new Employee(40, "test", BigDecimal.valueOf(3000)));
         System.out.println("scope of beans"); //DONE
+
+        System.out.println("count alphabets using streams");
+
+        Employee.countAlphabetsUsingStreams("kashgdkjahdkjahskjfaghkdgashgdjsdfsfsddgsgsgsgsh");
 
         System.out.println("get 2nd largest num from list");
         System.out.println(Employee.secondLargest(Arrays.asList(1, 2, 3, 4, 5)));
