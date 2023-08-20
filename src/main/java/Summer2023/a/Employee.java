@@ -21,10 +21,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Data
 @Builder
@@ -651,13 +653,12 @@ public class Employee implements Comparable<Employee> {
             System.out.println(employeeEntry.getKey() + " " + employeeEntry.getValue());
         }
 
-        System.out.println("palindromes");
+        System.out.println("Palindromes");
 
         String pWord = "radar";
 
         System.out.println(IntStream.rangeClosed(0, pWord.length() / 2)
                 .allMatch(i -> pWord.charAt(i) == pWord.charAt(pWord.length() - i - 1)));
-
 
         System.out.println("max number in list using streams");
 
@@ -672,5 +673,46 @@ public class Employee implements Comparable<Employee> {
                 .map(n -> n * n)
                 .toList();
         squares.forEach(System.out::println);
+/*****************************************************************************/
+        System.out.println("print name 10 times");
+
+        IntStream.rangeClosed(0, 10)
+                .forEach(x -> System.out.println("zeeshan"));
+
+        System.out.println("generate random integers between 100 and 200");
+        IntStream.generate(() -> 100 + new Random().nextInt(100))
+                .limit(10)
+                .forEach(System.out::println);
+
+        System.out.println("join 2 list");
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(6, 7, 8, 9, 0);
+
+        Stream<Integer> listStream = Stream.concat(list1.stream(), list2.stream());
+
+        List<Integer> list3 = listStream.toList();
+        for (int a : list3) {
+            System.out.println(a + " ");
+        }
+
+        System.out.println("join 2 String maps");
+        Map<String, String> map1 = new HashMap<>();
+        Map<String, String> map2 = new HashMap<>();
+
+        Map<String, String> map3 = Stream.of(map1, map2)
+                .flatMap(x -> x.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + "," + value2));
+
+        System.out.println("join 2 Integer maps");
+        Map<Integer, Integer> map4 = new HashMap<>();
+        Map<Integer, Integer> map5 = new HashMap<>();
+        map4.put(1, 1);
+        map5.put(2, 2);
+
+        Map<Integer, Integer> map6 = Stream.of(map4, map5)
+                .flatMap(x -> x.entrySet().stream())
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (x, y) -> x));
+        map6.forEach((k, v) -> System.out.println(k + " " + v));
+
     }
 }
