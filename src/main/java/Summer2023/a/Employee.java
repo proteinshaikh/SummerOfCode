@@ -661,6 +661,14 @@ public class Employee implements Comparable<Employee> {
             System.out.println(employeeEntry.getKey() + " " + employeeEntry.getValue());
         }
 
+        System.out.println("palindromes");
+
+        String pWord = "radar";
+
+        System.out.println(IntStream.rangeClosed(0, pWord.length() / 2)
+                .allMatch(i -> pWord.charAt(i) == pWord.charAt(pWord.length() - i - 1)));
+
+
         System.out.println("max number in list using streams");
 
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
