@@ -14,7 +14,7 @@ public class Main {
 
     private static final String string = "zeeshan zeeshan shaikh";
 
-    private static final int[] arr = new int[]{1, 2, 3, 4,9,15,21};
+    private static final int[] arr = new int[]{1, 2, 3, 4, 9, 15, 21};
     private static final List<Employee> employees = Arrays.asList(
             new Employee(1, "zeeshan", 1000, "IT"),
             new Employee(2, "shaikh", 2000, "HR"),
@@ -141,14 +141,14 @@ public class Main {
     }
 
     //program to check if list of numbers are divisible by 3
-    static void isDivisibleBy3(){
-       List<Integer> list =  Arrays.stream(arr)
+    static void isDivisibleBy3() {
+        List<Integer> list = Arrays.stream(arr)
                 .boxed()
                 .filter(x -> x % 3 == 0)
                 .toList();
-       for(int a: list){
-           System.out.println(a);
-       }
+        for (int a : list) {
+            System.out.println(a);
+        }
     }
 
     public static void main(String[] args) {
