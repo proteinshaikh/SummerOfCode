@@ -48,13 +48,13 @@ public class TestComparator {
         list.add(new Employee("Zeeshan", 1));
         list.add(new Employee("Shaikh", 2));
 
-        Collections.sort(list, new NameComparator());
+        list.sort(new NameComparator());
         for (Employee emp : list) {
             System.out.println("Name Comparator :" + emp.name + "  " + emp.id);
         }
 
 
-        Collections.sort(list, new IdComparator());
+        list.sort(new IdComparator());
         for (Employee emp : list) {
             System.out.println("ID Comparator :" + emp.name + "  " + emp.id);
         }
