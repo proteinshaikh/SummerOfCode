@@ -1,14 +1,11 @@
 package Summer2023.b;
 
-import kotlin.jvm.Synchronized;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Main {
 
@@ -24,8 +21,14 @@ public class Main {
             new Employee(6, "jim", 6000, "Support")
     );
 
+
+    private static final Map<Integer, Employee> map = employees.stream()
+            .collect(Collectors.toMap(Employee::getId, employees -> employees));
+
+
     // program to get duplicates from an array and print the duplicates
     static void getDuplicates() {
+
         Arrays.stream(arr)
                 .boxed()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
@@ -151,7 +154,42 @@ public class Main {
         }
     }
 
+    // program to sum numbers in list
+
+    static void sum() {
+        int sum = Arrays.stream(arr).sum();
+        System.out.println(sum);
+    }
+
+    //program to demontrate reduce using streams
+    static void reduce() {
+        int sum = Arrays.stream(arr).reduce(0, (a, b) -> a + b);
+        System.out.println(sum);
+    }
+
+    //program to generate even numbers between 100 and 200
+
+    static void even() {
+        IntStream.rangeClosed(100, 200)
+                .filter(x -> x % 2 == 0)
+                .boxed()
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    static void deleteMapEntries() {
+        map.entrySet().stream()
+                .filter(x -> x.getKey() != 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+
+
     public static void main(String[] args) {
+        deleteMapEntries();
+        even();
+        sum();
         isDivisibleBy3();
         rotateArray();
         System.out.println(factorial(4));
