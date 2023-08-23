@@ -1,15 +1,24 @@
 package Summer2023.b;
 
+import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Random;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Main {
 
-    private static final String string = "zeeshan zeeshan shaikh";
+    private static final String string = "zeeshan zeeshan shaikh shaikh akram";
 
     private static final int[] arr = new int[]{1, 2, 3, 4, 9, 15, 21};
     private static final List<Employee> employees = Arrays.asList(
@@ -161,7 +170,7 @@ public class Main {
         System.out.println(sum);
     }
 
-    //program to demontrate reduce using streams
+    //program to demonstrate reduce using streams
     static void reduce() {
         int sum = Arrays.stream(arr).reduce(0, (a, b) -> a + b);
         System.out.println(sum);
@@ -184,9 +193,162 @@ public class Main {
                 .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
+    //program to reverse array
+    static void reverseArray() {
+        IntStream.rangeClosed(0, arr.length - 1)
+                .map(i -> arr[i] = arr[arr.length - i - 1])
+                .boxed()
+                .toList()
+                .forEach(x -> System.out.print(x + " "));
+        System.out.println();
+    }
+
+    // You have been given an integer array/list(ARR) of size 'N'. It only contains 0s, 1s and 2s. Write a solution to sort this array/list.
+
+    static void sort() {
+        int[] ints = new int[]{1, 1, 2, 2, 0, 0, 0, 2, 1, 1, 1, 2};
+
+        Arrays.stream(ints)
+                .boxed()
+                .sorted(Comparator.naturalOrder())
+                .toList()
+                .forEach(x -> System.out.print(x + " "));
+    }
+
+    static void maxSubArraySum() {
+        int result = IntStream.rangeClosed(0, arr.length)
+                .boxed()
+                .flatMapToInt(i -> IntStream.rangeClosed(i, arr.length)
+                        .map(j -> Arrays.stream(arr, i, j).sum()))
+                .max().orElse(0);
+        System.out.println(result);
+    }
+
+    static void maxSubArray() {
+        IntStream.rangeClosed(0, arr.length)
+                .boxed()
+                .flatMap(i -> IntStream.rangeClosed(i + 1, arr.length)
+                        .mapToObj(j -> new AbstractMap.SimpleEntry<>(i, j)))
+                .max(Comparator.comparingInt(e -> Arrays.stream(arr, e.getKey(), e.getValue()).sum()))
+                .map(e -> {
+                    int[] subArray = Arrays.copyOfRange(arr, e.getKey(), e.getValue());
+                    return new AbstractMap.SimpleEntry<>(e.getKey() + " to " + (e.getValue() - 1), subArray);
+                })
+                .stream()
+                .collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey, AbstractMap.SimpleEntry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + Arrays.toString(v)));
+    }
+
+    //program for supplier, consumer, and predicate
+
+    static void functionalInterfaces() {
+
+        // Predicate
+        Predicate<Integer> predicate = x -> x > 2;
+        System.out.println(predicate.test(4));
+
+        // Consumer
+        Consumer<String> consumer = System.out::println;
+        Consumer<String> upperCase = str -> System.out.println(str.toUpperCase());
+        Consumer<String> printBoth = consumer.andThen(upperCase);
+        printBoth.accept("zeeshan");
+
+        // Supplier
+        Supplier<Integer> supplier = () -> new Random().nextInt(5);
+        System.out.println(supplier.get());
+    }
+
+    // program to swap integers
+
+    static void swap() {
+        int[] arr = new int[]{1, 2};
+
+        Arrays.stream(IntStream.rangeClosed(0, arr.length - 1)
+                        .boxed()
+                        .map(i -> arr[arr.length - i - 1])
+                        .toArray())
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Program to create streams
+    static void createStreams() {
+        Arrays.stream(Stream.of(1, 2, 3, 4, 5)
+                        .toArray())
+                .skip(2)
+                .limit(2)
+                .forEach(System.out::println);
+    }
+
+    // Convert a list of strings to a list of their lengths using streams.
+    static void stringToLength() {
+        Arrays.stream(string.split(" "))
+                .distinct()
+                .collect(Collectors.toMap(String::valueOf, x -> x.length()))
+                .forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+
+    // find max and min number from a list
+    static void minMax() {
+        Arrays.stream(arr)
+                .boxed()
+                .max(Comparator.naturalOrder())
+                .ifPresent(System.out::println);
+
+        Arrays.stream(arr)
+                .boxed()
+                .min(Comparator.naturalOrder())
+                .ifPresent(System.out::println);
+    }
+
+    //Find the top N elements from a list.
+    static void topElements() {
+        Arrays.stream(arr)
+                .boxed()
+                .limit(2)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //Convert a list of objects to a map with a specific attribute as the key.
+    static void listToMap() {
+        employees.stream()
+                .collect(Collectors.toMap(Employee::getId, employees -> employees))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // program to find max subArray
+
+    static void getMaxSubArray(int[] arr, int k) {
+        List<Integer> list = new ArrayList<>();
+        int sum = 0;
+
+        for (int i = 0; i < arr.length - k; i++) {
+            for (int j = i; j <= k + i - 1; j++) {
+                sum = sum + arr[j];
+            }
+            list.add(sum);
+            sum = 0;
+        }
+
+        Optional<Integer> max = list.stream().max(Comparator.naturalOrder());
+        System.out.println(max.isPresent() ? max.get() : false);
+    }
 
 
     public static void main(String[] args) {
+        getMaxSubArray(new int[]{1,2,3,4,5}, 2);
+        //listToMap();
+        //topElements();
+        //minMax();
+        //stringToLength();
+        //createStreams();
+        //swap();
+        // functionalInterfaces();
+        //maxSubArray();
+        //maxSubArraySum();
+        //sort();
+        /*reverseArray();
         deleteMapEntries();
         even();
         sum();
@@ -198,9 +360,6 @@ public class Main {
         getSumSalariesDept();
         getDuplicates();
         countUniqueWords();
-        getDistinctId();
+        getDistinctId();*/
     }
-
 }
-
-
