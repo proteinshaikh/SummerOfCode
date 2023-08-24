@@ -337,14 +337,14 @@ public class Main {
     }
 
     // program to demo threads
-    class MyThread extends Thread{
+    class MyThread extends Thread {
         @Override
-        public void run(){
+        public void run() {
             System.out.println("my thread" + Thread.currentThread().getId());
         }
     }
 
-    class MyRunnable implements Runnable{
+    class MyRunnable implements Runnable {
 
         @Override
         public void run() {
@@ -361,8 +361,8 @@ public class Main {
     }
 
     // Program to filter out empty streams from list
-    static void filterEmptyStrings(){
-        List<String> strings = Arrays.asList("zeeshan", "", "shaikh" ," ","test");
+    static void filterEmptyStrings() {
+        List<String> strings = Arrays.asList("zeeshan", "", "shaikh", " ", "test");
 
         strings.stream()
                 .filter(x -> !Objects.equals(x, ""))
@@ -370,12 +370,52 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    // program to generate random integers from 100 to 200
+
+    static void generateRandom() {
+        IntStream.generate(() -> 100 + new Random().nextInt(100))
+                .limit(5)
+                .boxed()
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Program to print names 10 times
+    static void printNames() {
+        IntStream.rangeClosed(0, 10)
+                .forEach(x -> System.out.println("zeeshan"));
+    }
+
+    // Program to count alphabets using streams
+
+    static void countAlphabets() {
+        string.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // Program to reverse String
+    static void reverseString() {
+
+        String str = "zeeshan";
+        IntStream.rangeClosed(0, str.length() - 1)
+                .mapToObj(i -> str.charAt(str.length() - i - 1))
+                .map(String::valueOf)
+                .toList()
+                .forEach(System.out::print);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        filterEmptyStrings();
+        //reverseString();
+        //countAlphabets();
+        //printNames();
+        //generateRandom();
+        //filterEmptyStrings();
         /*Main main = new Main();
         main.runThreads();*/
-       // getMaxSubArray(new int[]{1,2,3,4,5}, 2);
+        // getMaxSubArray(new int[]{1,2,3,4,5}, 2);
         //listToMap();
         //topElements();
         //minMax();
