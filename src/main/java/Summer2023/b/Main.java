@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -335,9 +336,46 @@ public class Main {
         System.out.println(max.isPresent() ? max.get() : false);
     }
 
+    // program to demo threads
+    class MyThread extends Thread{
+        @Override
+        public void run(){
+            System.out.println("my thread" + Thread.currentThread().getId());
+        }
+    }
 
-    public static void main(String[] args) {
-        getMaxSubArray(new int[]{1,2,3,4,5}, 2);
+    class MyRunnable implements Runnable{
+
+        @Override
+        public void run() {
+            System.out.println("my thread" + Thread.currentThread().getId());
+        }
+    }
+
+    void runThreads() throws InterruptedException {
+        Thread t1 = new MyThread();
+        Thread t2 = new Thread(new MyRunnable());
+        t1.setPriority(Thread.MAX_PRIORITY);
+        t1.start();
+        t2.start();
+    }
+
+    // Program to filter out empty streams from list
+    static void filterEmptyStrings(){
+        List<String> strings = Arrays.asList("zeeshan", "", "shaikh" ," ","test");
+
+        strings.stream()
+                .filter(x -> !Objects.equals(x, ""))
+                .toList()
+                .forEach(System.out::println);
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        filterEmptyStrings();
+        /*Main main = new Main();
+        main.runThreads();*/
+       // getMaxSubArray(new int[]{1,2,3,4,5}, 2);
         //listToMap();
         //topElements();
         //minMax();
