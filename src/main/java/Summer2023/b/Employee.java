@@ -15,6 +15,7 @@ public class Employee implements Comparable<Employee> {
     private int id;
     private String name;
     private long salary;
+    private int age;
     private String department;
 
 
@@ -52,10 +53,13 @@ public class Employee implements Comparable<Employee> {
 
     public static void main(String[] args) {
 
-        List<Employee> employees = Arrays.asList(
-                new Employee(1, "zeeshan", 1000, "IT"),
-                new Employee(2, "zeeshan", 2000, "HR"),
-                new Employee(3, "zeeshan", 3000, "Support")
+        final List<Employee> employees = Arrays.asList(
+                new Employee(1, "zeeshan", 1000, 10,"IT"),
+                new Employee(2, "shaikh", 2000, 20,"HR"),
+                new Employee(3, "akram", 3000, 30,"Support"),
+                new Employee(4, "john", 4000, 40,"IT"),
+                new Employee(5, "doe", 5000, 50,"HR"),
+                new Employee(6, "jim", 6000, 60,"Support")
         );
         Collections.sort(employees);
         //employees.sort(new SalaryComparator().SALARY_COMPARATOR);

@@ -21,14 +21,18 @@ public class Main {
 
     private static final String string = "zeeshan zeeshan shaikh shaikh akram";
 
-    private static final int[] arr = new int[]{1, 2, 3, 4, 9, 15, 21};
+    private static final int[] arr = new int[]{1, 2, 3, 4, 9, 15, 21, 9, 15, 21, 21, 21};
+
     private static final List<Employee> employees = Arrays.asList(
-            new Employee(1, "zeeshan", 1000, "IT"),
-            new Employee(2, "shaikh", 2000, "HR"),
-            new Employee(3, "akram", 3000, "Support"),
-            new Employee(4, "john", 4000, "IT"),
-            new Employee(5, "doe", 5000, "HR"),
-            new Employee(6, "jim", 6000, "Support")
+            new Employee(1, "zeeshan", 1000, 10, "IT"),
+            new Employee(7, "zeeshan", 1000, 10, "IT"),
+            new Employee(8, "zeeshan", 1000, 10, "IT"),
+            new Employee(2, "shaikh", 2000, 20, "HR"),
+            new Employee(9, "shaikh", 2000, 20, "HR"),
+            new Employee(3, "akram", 3000, 30, "Support"),
+            new Employee(4, "john", 4000, 40, "IT"),
+            new Employee(5, "doe", 5000, 50, "HR"),
+            new Employee(6, "jim", 6000, 60, "Support")
     );
 
 
@@ -406,8 +410,90 @@ public class Main {
                 .forEach(System.out::print);
     }
 
+    static void evenGreaterThanN() {
+        IntStream.rangeClosed(10, 100)
+                .boxed()
+                .filter(x -> x % 2 == 0)
+                .limit(5)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // program to find maximum salary of all employees in a department
+
+    static void maxSalaryDepartment() {
+        employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment,
+                        Collectors.maxBy(Comparator.comparing(Employee::getSalary))))
+                .forEach((key, value) -> System.out.println(key + " = " + value));
+
+    }
+
+    static void totalSalaryByAge() {
+        long sum = employees.stream()
+                .filter(x -> x.getAge() > 30)
+                .mapToLong(Employee::getSalary).sum();
+        System.out.println(sum);
+
+    }
+
+    // program to get 2nd largest num from list
+    static void get2ndLargestNum() {
+        Optional<Integer> nthLargest = Arrays.stream(arr)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .skip(1)
+                .findFirst();
+        System.out.println(nthLargest);
+    }
+
+    // program to print duplicates and their occurrences from Employee object
+
+    static void getDuplicateOccurrences() {
+        employees.stream()
+                .collect(Collectors.groupingBy(Employee::getName, Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+
+    // Program to remove duplicates from list of strings
+
+    static void removeDuplicates() {
+
+        Arrays.stream(string.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+
+    // Program to find most common element in an array
+    static void mostCommon() {
+        Optional<Integer> mostCommon = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparingLong(Map.Entry::getValue))
+                .map(Map.Entry::getKey);
+        System.out.println(mostCommon);
+
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
+        mostCommon();
+        //removeDuplicates();
+        //getDuplicateOccurrences();
+        //get2ndLargestNum();
+        //totalSalaryByAge();
+        //maxSalaryDepartment();
+        //evenGreaterThanN();
         //reverseString();
         //countAlphabets();
         //printNames();
