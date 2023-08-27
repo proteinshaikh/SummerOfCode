@@ -4,11 +4,13 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Stack;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -485,9 +487,41 @@ public class Main {
 
     }
 
+    // Program to check if brackets are in pattern
+
+    static void checkPattern() {
+        String pattern = "{[()]}";
+        Map<Character, Character> map = new HashMap<>();
+
+        {
+            map.put('}', '{');
+            map.put(']', '[');
+            map.put(')', '(');
+        }
+
+        Stack<Character> stack = new Stack<>();
+
+        boolean result = pattern.chars()
+                .mapToObj(c -> (char) c)
+                .allMatch(x ->
+                {
+                    if (map.containsValue(x)) {
+                        stack.push(x);
+                        return true;
+                    }
+                    if (map.containsKey(x)) {
+                        return stack.pop() == map.get(x);
+                    }
+                    return true;
+                }) && stack.isEmpty();
+
+        System.out.println("is pattern valid: " + result);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        mostCommon();
+        checkPattern();
+        //mostCommon();
         //removeDuplicates();
         //getDuplicateOccurrences();
         //get2ndLargestNum();
