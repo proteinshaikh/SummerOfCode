@@ -3,8 +3,10 @@ package Summer2023.b;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -13,6 +15,7 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -23,7 +26,7 @@ public class Main {
 
     private static final String string = "zeeshan zeeshan shaikh shaikh akram";
 
-    private static final int[] arr = new int[]{1, 2, 3, 4, 9, 15, 21, 9, 15, 21, 21, 21};
+    private static final int[] arr = new int[]{16, 17, 4, 3, 5, 2};
 
     private static final List<Employee> employees = Arrays.asList(
             new Employee(1, "zeeshan", 1000, 10, "IT"),
@@ -518,9 +521,106 @@ public class Main {
         System.out.println("is pattern valid: " + result);
     }
 
+    // Program to find leader array. The rightmost element is always a leader.
+
+    static void leaderArray() {
+        IntStream.range(0, arr.length)  // Create a stream of indices
+                .boxed()                       // Box them to Integer objects
+                .collect(Collectors.collectingAndThen(  // Use this to reverse the list after collection
+                        Collectors.toList(),
+                        list -> {
+                            Collections.reverse(list);
+                            return list.stream();
+                        }))
+                .collect(Collectors.toMap(
+                        i -> i,                   // Use index as the key
+                        i -> arr[i],              // Use array value as the value
+                        (oldVal, newVal) -> oldVal,  // In case of key collision, keep the old value
+                        LinkedHashMap::new))  // Maintain insertion order
+                .values()
+                .stream()
+                .filter(new Predicate<>() {
+                    private int maxSoFar = Integer.MIN_VALUE;
+
+                    @Override
+                    public boolean test(Integer value) {
+                        if (value > maxSoFar) {
+                            maxSoFar = value;
+                            return true;
+                        }
+                        return false;
+                    }
+                })
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Program to find first non-repeated character
+    static void firstNonRepeatedChar() {
+        string.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() == 1)
+                .findFirst()
+                .ifPresent(System.out::println);
+    }
+
+    // SQL to find 3rd highest salary
+
+    String nThHighestSalary = "select * from employee where (select distinct salary from employee order by salary desc limit 2, 1)";
+
+
+    // Program to find common elements between 2 arrays
+
+    static void commonElements() {
+        int[] arr1 = new int[]{1, 2, 3, 4, 5};
+        int[] arr2 = new int[]{4, 5, 6, 7, 8};
+
+        Arrays.stream(arr1)
+                .distinct()
+                .boxed()
+                .filter(x -> Arrays.stream(arr2).anyMatch(y -> y == x))
+                .forEach(System.out::println);
+    }
+
+    // Program to delete/merge hashmap entries
+    static void modifyMap() {
+        employees.stream()
+                .skip(1)
+                .toList()
+                .forEach(System.out::println);
+
+    }
+
+    // Program to demonstrate lambda expression
+
+    interface Shape {
+        String square(int side);
+    }
+
+    interface EmployeeInt {
+        Employee getEmployee(Employee employee);
+
+    }
+
+    //Program to find factorial
+    static int getfactorial(int n) {
+        if (n <= 1) return 1;
+
+        return n * factorial(n - 1);
+
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        checkPattern();
+        System.out.println(getfactorial(5));
+        //modifyMap();
+        //commonElements();
+        //firstNonRepeatedChar();
+        //leaderArray();
+        //checkPattern();
         //mostCommon();
         //removeDuplicates();
         //getDuplicateOccurrences();
@@ -559,5 +659,14 @@ public class Main {
         getDuplicates();
         countUniqueWords();
         getDistinctId();*/
+        // lambda expression
+       /* Shape shape = (int side) -> "this is square String";
+        System.out.println(shape.square(2));
+
+        EmployeeInt employee = (Employee em) -> Employee.builder().age(em.getAge()).id(em.getId())
+                .name(em.getName()).salary(em.getSalary()).department(em.getDepartment()).build();
+        Employee emp = employee.getEmployee(new Employee(1, "zeeshan", 1000, 10, "IT"));
+        System.out.println(emp.getSalary()+ " : " + emp.getId());*/
+
     }
 }
