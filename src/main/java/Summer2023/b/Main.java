@@ -613,9 +613,17 @@ public class Main {
 
     }
 
+    // program to count words in a string
+    static void countWords() {
+        Arrays.stream(string.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println(getfactorial(5));
+        countWords();
+        //System.out.println(getfactorial(5));
         //modifyMap();
         //commonElements();
         //firstNonRepeatedChar();
