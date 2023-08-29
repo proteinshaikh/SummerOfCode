@@ -1,5 +1,7 @@
 package Summer2023.b;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -620,9 +622,56 @@ public class Main {
                 .forEach((key, value) -> System.out.println(key + " = " + value));
     }
 
+    // program to merge 3 arrays into 1
+    static void mergeArrays() {
+        Integer[] arr1 = {3, 4, 5};
+        Integer[] arr2 = {1, 2, 3};
+        Integer[] arr3 = {4, 5, 6};
+
+        Integer[] res = Stream.of(arr1, arr2, arr3)
+                .flatMap(Stream::of)
+                .toArray(Integer[]::new);
+
+        System.out.println(Arrays.toString(res));
+    }
+
+    static void mergeArraysPrimitive() {
+        int[] arr1 = {3, 4, 5};
+        int[] arr2 = {1, 2, 3};
+        int[] arr3 = {4, 5, 6};
+
+        int[] res = Stream.of(arr1, arr2, arr3)
+                .flatMapToInt(IntStream::of)
+                .toArray();
+
+        System.out.println(Arrays.toString(res));
+    }
+
+    @SafeVarargs
+    static <T> T[] mergedArraysGeneric(T[]... arr) {
+        return Stream.of(arr)
+                .flatMap(Stream::of)
+                .toArray(x -> Arrays.copyOf(arr[0], x));
+    }
+
+    static int[] mergedArraysGeneric(int[]... arr) {
+        return Stream.of(arr)
+                .flatMapToInt(IntStream::of)
+                .toArray();
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        countWords();
+        Integer[] array1 = {1, 2, 3};
+        Integer[] array2 = {4, 5, 6};
+        Integer[] array3 = {7, 8, 9};
+
+        System.out.println(Arrays.toString(mergedArraysGeneric(new int[]{1, 2, 3}, new int[]{4, 5, 6})));
+
+        //System.out.println(Arrays.toString(mergedArraysGeneric(array1, array2)));
+        //mergeArraysPrimitive();
+        //mergeArrays();
+        //countWords();
         //System.out.println(getfactorial(5));
         //modifyMap();
         //commonElements();
