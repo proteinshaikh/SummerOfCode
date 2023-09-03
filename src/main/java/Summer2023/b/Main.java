@@ -17,7 +17,6 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -184,7 +183,7 @@ public class Main {
 
     //program to demonstrate reduce using streams
     static void reduce() {
-        int sum = Arrays.stream(arr).reduce(0, (a, b) -> a + b);
+        int sum = Arrays.stream(arr).reduce(0, Integer::sum);
         System.out.println(sum);
     }
 
@@ -292,7 +291,7 @@ public class Main {
                 .forEach(System.out::println);
     }
 
-    // Convert a list of strings to a list of their lengths using streams.
+    // Convert a list of strings to a map of their lengths using streams.
     static void stringToLength() {
         Arrays.stream(string.split(" "))
                 .distinct()
@@ -348,14 +347,14 @@ public class Main {
     }
 
     // program to demo threads
-    class MyThread extends Thread {
+    static class MyThread extends Thread {
         @Override
         public void run() {
             System.out.println("my thread" + Thread.currentThread().getId());
         }
     }
 
-    class MyRunnable implements Runnable {
+    static class MyRunnable implements Runnable {
 
         @Override
         public void run() {
@@ -660,13 +659,23 @@ public class Main {
                 .toArray();
     }
 
+    // program to sort employee id reverse using streams"
+    static void sortReverse(){
+        employees.stream()
+                .sorted(Comparator.comparing(Employee::getId).reversed())
+                .toList()
+                .forEach(System.out::println);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        Integer[] array1 = {1, 2, 3};
+
+        sortReverse();
+       /* Integer[] array1 = {1, 2, 3};
         Integer[] array2 = {4, 5, 6};
         Integer[] array3 = {7, 8, 9};
 
-        System.out.println(Arrays.toString(mergedArraysGeneric(new int[]{1, 2, 3}, new int[]{4, 5, 6})));
+        System.out.println(Arrays.toString(mergedArraysGeneric(new int[]{1, 2, 3}, new int[]{4, 5, 6})));*/
 
         //System.out.println(Arrays.toString(mergedArraysGeneric(array1, array2)));
         //mergeArraysPrimitive();
