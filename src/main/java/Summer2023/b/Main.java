@@ -676,9 +676,49 @@ public class Main {
         System.out.println(res);
     }
 
+    // program to Check if a list of Strings contains a specific string (ignoring case)
+    static void findString() {
+        boolean res = Arrays.stream(string.split(" "))
+                .anyMatch(x -> x.equalsIgnoreCase("zeeshan"));
+        System.out.println(res);
+    }
+
+    //Convert a list of integers to a comma-separated string
+    static void intToString() {
+        String str = Arrays.stream(arr)
+                .mapToObj(Integer::toString)
+                .collect(Collectors.joining(", "));
+        System.out.println(str);
+    }
+
+    //Find the sum of squares of all odd numbers in a list
+    static void squares() {
+        Arrays.stream(arr)
+                .boxed()
+                .filter(x -> x % 2 != 0)
+                .map(x -> x * x)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //Find the common elements between two lists
+    static void common() {
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(4, 5, 6, 7, 8);
+
+        list1.stream()
+                .filter(x -> list2.stream().anyMatch(y -> Objects.equals(y, x)))
+                .toList()
+                .forEach(System.out::println);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-        palindromes();
+        common();
+        //squares();
+        //intToString();
+        // findString();
+        //palindromes();
         //sortReverse();
        /* Integer[] array1 = {1, 2, 3};
         Integer[] array2 = {4, 5, 6};
