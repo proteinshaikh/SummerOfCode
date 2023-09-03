@@ -660,17 +660,26 @@ public class Main {
     }
 
     // program to sort employee id reverse using streams"
-    static void sortReverse(){
+    static void sortReverse() {
         employees.stream()
                 .sorted(Comparator.comparing(Employee::getId).reversed())
                 .toList()
                 .forEach(System.out::println);
     }
 
+    static void palindromes() {
+        String str = "radar";
+
+        boolean res = IntStream.rangeClosed(0, str.length() / 2)
+                .mapToObj(c -> (char) c)
+                .allMatch(x -> str.charAt(x) == str.charAt(str.length() - x - 1));
+        System.out.println(res);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
-
-        sortReverse();
+        palindromes();
+        //sortReverse();
        /* Integer[] array1 = {1, 2, 3};
         Integer[] array2 = {4, 5, 6};
         Integer[] array3 = {7, 8, 9};
