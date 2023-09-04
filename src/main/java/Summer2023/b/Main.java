@@ -5,6 +5,7 @@ import org.apache.poi.ss.formula.functions.T;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -712,9 +713,78 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    //Given a list of strings, create a new list containing only strings that have more than 3 characters, transformed to uppercase.
+
+    static void filterAndTransform() {
+        String str = "aa bbb cccc";
+
+        String res = Arrays.stream(str.split(" "))
+                .filter(x -> x.length() > 3)
+                .map(String::toUpperCase)
+                .collect(Collectors.joining(" "));
+
+        System.out.println(res);
+
+    }
+
+    //Given a list of integers, calculate their average.
+
+    static void average() {
+        Arrays.stream(arr).average().ifPresent(System.out::println);
+    }
+
+    // Given a list of strings, group them by their lengths.
+    static void groupByCriteria() {
+        String str = "aa ss ddd free rttttt";
+
+        Arrays.stream(str.split(" "))
+                .collect(Collectors.groupingBy(String::length))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+
+
+    }
+
+    //Given a list of strings, find the most frequently occurring string. If there are multiple such strings, any of them may be returned
+
+    static void frequency() {
+        String str = String.valueOf(Arrays.stream(string.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(Comparator.comparingInt(x -> Math.toIntExact(x.getValue())))
+                .stream().findAny());
+        System.out.println(str);
+    }
+
+    //Given a list of lists of integers, create a flat list of all integers
+    static void listOfLists() {
+        List<List<Integer>> list = Arrays.asList(Arrays.asList(1, 2, 3, 4, 5), Arrays.asList(4, 5, 6, 7, 8));
+
+        list.parallelStream()
+                .flatMap(Collection::stream)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //Given a list of integers, return a distinct list with each number squared
+
+    static void squared() {
+        IntStream.of(arr)
+                .boxed()
+                .distinct()
+                .map(x -> x * x)
+                .toList()
+                .forEach(System.out::println);
+    }
 
     public static void main(String[] args) throws InterruptedException {
-        common();
+        //squared();
+        //listOfLists();
+        //frequency();
+        //groupByCriteria();
+        // average();
+        //filterAndTransform();
+        //common();
         //squares();
         //intToString();
         // findString();
