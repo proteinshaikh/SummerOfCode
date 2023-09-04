@@ -35,7 +35,8 @@ public class Main {
             new Employee(7, "zeeshan", 1000, 10, "IT"),
             new Employee(8, "zeeshan", 1000, 10, "IT"),
             new Employee(2, "shaikh", 2000, 20, "HR"),
-            new Employee(9, "shaikh", 2000, 20, "HR"),
+            new Employee(9, "shaikh", 2000, 40, "HR"),
+            new Employee(10, "shaikh", 2000, 30, "HR"),
             new Employee(3, "akram", 3000, 30, "Support"),
             new Employee(4, "john", 4000, 40, "IT"),
             new Employee(5, "doe", 5000, 50, "HR"),
@@ -788,8 +789,69 @@ public class Main {
 
     }
 
+    //Convert a list of strings into a map where each string is a key, and its length is the value.
+
+    static void convertListToMap() {
+
+        Arrays.stream(string.split(" "))
+                .distinct()
+                .collect(Collectors.toMap(Function.identity(), String::length))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+
+    }
+
+    // Find the maximum and minimum number from a list of integers.
+    static void maxMin() {
+        Optional<Integer> max = IntStream.of(arr)
+                .boxed()
+                .max(Comparator.comparingInt(Integer::intValue));
+        Optional<Integer> min = IntStream.of(arr)
+                .boxed()
+                .min(Comparator.comparingInt(Integer::intValue));
+        System.out.println("max = " + max + "\n" + "min = " + min);
+
+    }
+
+    //Given a list of lists of strings, concatenate them into a single list of strings.
+
+    static void concat() {
+        List<List<String>> lists = Arrays.asList(Arrays.asList("aa", "bb"), Arrays.asList("cc", "dd"));
+
+        String str = lists.stream()
+                .flatMap(Collection::stream)
+                .collect(Collectors.joining());
+        System.out.println(str);
+    }
+
+    // Given a list of Person objects with name and age fields, sort them by name, and then by age for those with the same name.
+
+    static void sortNameAge() {
+        employees.stream()
+                .sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getAge))
+                .forEach(System.out::println);
+
+    }
+
+    //Given a list of numbers, find the square root of the first 5 distinct numbers greater than 10.
+
+    static void squareDistinct() {
+        IntStream.of(arr)
+                .boxed()
+                .filter(num -> num > 10)
+                .distinct()
+                .limit(5)
+                .map(Math::sqrt)
+                .toList()
+                .forEach(System.out::println);
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        partition();
+        //squareDistinct();
+        //sortNameAge();
+        //concat();
+        //minMax();
+        //convertListToMap();
+        //partition();
         //squared();
         //listOfLists();
         //frequency();
