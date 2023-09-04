@@ -777,7 +777,19 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    // Partition a list of numbers into even and odd
+
+    static void partition() {
+        Map<Boolean, List<Integer>> map = IntStream.of(arr)
+                .boxed()
+                .collect(Collectors.partitioningBy(x -> x % 2 == 0));
+
+        map.forEach((k, v) -> System.out.println(k + "= " + v));
+
+    }
+
     public static void main(String[] args) throws InterruptedException {
+        partition();
         //squared();
         //listOfLists();
         //frequency();
