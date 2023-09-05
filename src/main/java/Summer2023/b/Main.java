@@ -890,8 +890,52 @@ public class Main {
 
     }
 
+    //Group a list of Person objects first by their city and then by their age.
+    static void group() {
+        employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.groupingBy(Employee::getAge)))
+                .forEach((department, ageMap) -> {
+                    System.out.println(department + " = ");
+                    ageMap.forEach((age, employeeList) -> System.out.println("\t" + age + " = " + employeeList));
+                });
+    }
+
+    //Retrieve the top 3 longest strings from a list.
+    static void top3() {
+        Stream.of(string.split(" "))
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .limit(3)
+                .forEach(System.out::println);
+    }
+
+    //check if a number is prime
+    static void primeNums() {
+        int num = 3;
+
+        boolean res = IntStream.rangeClosed(2, (int) Math.sqrt(num))
+                .boxed()
+                .noneMatch(x -> num % x == 0);
+        System.out.println(res);
+    }
+
+    //Given a stream of numbers, calculate the sum of the square roots of the unique even numbers.
+    static void sqrt() {
+        double res = Arrays.stream(arr)
+                .boxed()
+                .filter(n -> n % 2 == 0)
+                .distinct()
+                .mapToDouble(Math::sqrt)
+                .sum();
+        System.out.println(res);
+    }
 
     public static void main(String[] args) throws InterruptedException {
+        sqrt();
+        //primeNums();
+        //top3();
+        //group();
         //withoutDuplicates();
         //threshold();
         //joinListOfStrings();

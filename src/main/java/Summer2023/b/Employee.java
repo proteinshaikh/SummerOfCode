@@ -44,7 +44,7 @@ public class Employee implements Comparable<Employee> {
         int nameComp = name.compareTo(other.getName());
         if (nameComp != 0) return nameComp;
 
-        //if name is same compare by salary\
+        //if name is same compare by salary
         if (id > other.getSalary()) return 1;
         if (id < other.getSalary()) return -1;
 
