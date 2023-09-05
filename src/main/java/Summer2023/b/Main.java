@@ -845,7 +845,58 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    //Given a list of strings, filter and collect those that start with a certain prefix.
+    static void prefix() {
+        String str = Stream.of(string.split(" "))
+                .filter(x -> x.startsWith("zee"))
+                .collect(Collectors.joining(" "));
+        System.out.println(str);
+    }
+
+    //Calculate the sum of squares of positive numbers from a list of integers.
+    static void sumOfSquares() {
+        int sum = IntStream.of(arr)
+                .boxed()
+                .filter(x -> x > 0)
+                .map(x -> x * x)
+                .mapToInt(Integer::intValue)
+                .sum();
+        System.out.println(sum);
+    }
+
+    //Join a list of strings into a single string with a comma delimiter.
+    static void joinListOfStrings() {
+        String res = Stream.of(string.split(" "))
+                .collect(Collectors.joining(" , "));
+        System.out.println(res);
+    }
+
+    //Count the number of strings in a list that have a length greater than a given threshold.
+    static void threshold() {
+        long res = Stream.of(string.split(" "))
+                .filter(x -> x.length() > 6)
+                .count();
+        System.out.println(res);
+    }
+
+    //Given a list of integers, return a list of squares without duplicates.
+    static void withoutDuplicates() {
+        IntStream.of(arr)
+                .boxed()
+                .distinct()
+                .map(x -> x * x)
+                .toList()
+                .forEach(System.out::println);
+
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
+        //withoutDuplicates();
+        //threshold();
+        //joinListOfStrings();
+        //sumOfSquares();
+        //prefix();
         //squareDistinct();
         //sortNameAge();
         //concat();
