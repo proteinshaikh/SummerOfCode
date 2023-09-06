@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -931,8 +932,112 @@ public class Main {
         System.out.println(res);
     }
 
+    //Compute both the average and sum of a list of numbers.
+    static void avgSum() {
+        DoubleSummaryStatistics summaryStatistics = IntStream.of(arr)
+                .boxed()
+                .collect(Collectors.summarizingDouble(x -> x));
+
+        double sum = summaryStatistics.getSum();
+        double avg = summaryStatistics.getAverage();
+        System.out.println(sum);
+        System.out.println(avg);
+    }
+
+    //Print each element of the stream as it's processed, without altering the final result.
+    static void process() {
+        Arrays.stream(string.split(" "))
+                .peek(System.out::println)
+                .map(String::toUpperCase)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //Given a list of Employee objects, compute the total salary for a specific department.
+    static void totalSalaryByDept() {
+        double totalSalary = employees.stream()
+                .filter(e -> "IT".equals(e.getDepartment()))
+                .map(Employee::getSalary)
+                .reduce(0L, Long::sum);
+        System.out.println(totalSalary);
+
+    }
+
+    /**
+     * Generates a stream of Fibonacci numbers using the Stream API.
+     *
+     * <p>{@code Stream.iterate(...)}: This method is used to create an infinite stream where each next element is
+     * generated based on the previous one.</p>
+     *
+     * <p><b>Initial Value {@code new long[]{0, 1}}</b>: This is the seed or starting value of the stream. It's an array
+     * of two long numbers representing the first two numbers in the Fibonacci sequence (0 and 1).</p>
+     *
+     * <p><b>Lambda Expression {@code p -> new long[]{p[1], p[0] + p[1]}}</b>: This is the function that produces the
+     * next value in the stream based on the current value.
+     * Here, {@code p} represents the current pair of Fibonacci numbers in the stream. For each pair:
+     * <ul>
+     *   <li>{@code p[1]} is the second number of the pair, and it will become the first number of the next pair.</li>
+     *   <li>{@code p[0] + p[1]} calculates the next Fibonacci number.</li>
+     * </ul>
+     * Therefore, given a pair like (a, b), the next pair produced by this lambda function will be (b, a + b).</p>
+     *
+     * <p>{@code .map(p -> p[0])}: This step transforms the stream of pairs to a stream of single numbers. It extracts
+     * the first number from each pair (which is a Fibonacci number) to produce the next number in the sequence.</p>
+     */
+    static void fibonacci() {
+        Stream.iterate(new long[]{0, 1}, p -> new long[]{p[1], p[0] + p[1]})
+                .map(p -> p[0])
+                .limit(10)
+                .forEach(System.out::println);
+    }
+
+    /**
+     * Group employees by department, and within each department group by salary bands
+     */
+    static void advGrouping() {
+        Map<String, Map<String, List<Employee>>> map = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.groupingBy(e -> {
+                    if (e.getSalary() < 2000) return "band 1";
+                    if (e.getSalary() > 2000) return "band 2";
+                    else return "band 3";
+                })));
+
+        map.forEach(
+                (dept, band) -> {
+                    System.out.println(dept + " : ");
+                    band.forEach(
+                            (band1, emp) -> System.out.println("\t" + band1 + " = " + emp));
+                }
+        );
+    }
+
+    //Reusing Streams
+    static void reuse() {
+        Supplier<Stream<String>> supplier = () -> Arrays.stream(string.split(" "));
+        supplier.get().forEach(System.out::println);
+        boolean res = supplier.get().anyMatch("zeeshan"::equals);
+        System.out.println(res);
+    }
+
+    interface Shapes {
+        int rectangle(int a, int b);
+
+        default int square(int side) {
+            return side * side;
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        sqrt();
+        Shapes shapes = (a, b) -> (a * b);
+        System.out.println(shapes.rectangle(3, 2));
+        System.out.println(shapes.square(5));
+        //reuse();
+        //advGrouping();
+        //fibonacci();
+        //totalSalaryByDept();
+        //process();
+        //avgSum();
+        //sqrt();
         //primeNums();
         //top3();
         //group();

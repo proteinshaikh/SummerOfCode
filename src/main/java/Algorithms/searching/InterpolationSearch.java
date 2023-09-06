@@ -19,7 +19,7 @@ public class InterpolationSearch {
 
     public static void main(String[] args) {
 
-        int arr[] = {10, 12, 13, 16, 18, 19, 20, 21,
+        int[] arr = {10, 12, 13, 16, 18, 19, 20, 21,
                 22, 23, 24, 33, 35, 42, 47};
 
         int n = arr.length;
@@ -34,7 +34,7 @@ public class InterpolationSearch {
 
     }
 
-    public static int interpolationSearch(int arr[], int lo, int hi, int x) {
+    public static int interpolationSearch(int[] arr, int lo, int hi, int x) {
 
         int pos;
         if (lo <= hi && x >= arr[lo] && x <= arr[hi]) {

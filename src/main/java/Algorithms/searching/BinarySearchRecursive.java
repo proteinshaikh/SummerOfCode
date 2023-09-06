@@ -4,8 +4,8 @@ package Algorithms.searching;
 public class BinarySearchRecursive {
 	public static void main(String[] args) {
 		
-		int[] myarray= {10,20,30,40,50,60};
-		binarySearchRecursiveMethod(myarray, 99, 0, 5);
+		int[] array= {10,20,30,40,50,60};
+		binarySearchRecursiveMethod(array, 99, 0, 5);
 	}
 	
 	public static boolean binarySearchRecursiveMethod(int[] array, int x, int left, int right) {

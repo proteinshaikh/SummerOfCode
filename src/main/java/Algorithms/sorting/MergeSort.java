@@ -20,17 +20,16 @@ public class MergeSort {
 
     }
 
-    void merge(int arr[], int l, int m, int r) {
+    void merge(int[] arr, int l, int m, int r) {
 
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
 
-        int L[] = new int[n1];
-        int R[] = new int[n2];
+        int[] L = new int[n1];
+        int[] R = new int[n2];
 
-        for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
+        System.arraycopy(arr, l, L, 0, n1);
         for (int j = 0; j < n2; ++j)
             R[j] = arr[m + 1 + j];
 
@@ -56,7 +55,7 @@ public class MergeSort {
 
     }
 
-    void sort(int arr[], int l, int r) {
+    void sort(int[] arr, int l, int r) {
         if (l < r) {
             int m = l + (r - l) / 2;
 

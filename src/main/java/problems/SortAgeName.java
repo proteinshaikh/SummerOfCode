@@ -15,15 +15,12 @@ public class SortAgeName {
         employees.add(new Employees(5, "TEST", 80));
 
 
-        Collections.sort(employees, new Comparator<Employees>() {
-            @Override
-            public int compare(Employees e, Employees e1) {
-                int res = Integer.compare(e.getAge(), e1.getAge());
-                if (res != 0) {
-                    res = e.getName().compareTo(e1.getName());
-                }
-                return res;
+        employees.sort((e, e1) -> {
+            int res = Integer.compare(e.getAge(), e1.getAge());
+            if (res != 0) {
+                res = e.getName().compareTo(e1.getName());
             }
+            return res;
         });
         System.out.println(employees +"\n");
         System.out.println(employees +"\n");

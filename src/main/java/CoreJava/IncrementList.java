@@ -13,15 +13,15 @@ public class IncrementList {
 
         System.out.println("List Before increment: ");
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i));
+        for (Integer integer : list) {
+            System.out.print(integer);
             System.out.print(" ");
         }
         System.out.println("\n");
         System.out.println("List After increment: ");
 
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + 1);
+        for (Integer integer : list) {
+            System.out.print(integer + 1);
             System.out.print(" ");
         }
     }

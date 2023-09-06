@@ -13,10 +13,7 @@ public class IterateMap {
         bookMap.put(4, "beef");
         bookMap.put(5, "incredible india");
 
-        Iterator<Map.Entry<Integer, String>> itr = bookMap.entrySet().iterator();
-
-        while (itr.hasNext()) {
-            Map.Entry<Integer, String> iterateBooks = itr.next();
+        for (Map.Entry<Integer, String> iterateBooks : bookMap.entrySet()) {
             System.out.println("BookNum = " + iterateBooks.getKey() + "  " + "Book name = " + iterateBooks.getValue());
 
         }

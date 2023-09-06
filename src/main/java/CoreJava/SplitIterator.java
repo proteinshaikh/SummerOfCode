@@ -20,7 +20,7 @@ public class SplitIterator {
 		Iterator<String> iterator = Arrays.asList("Z","E","E","S").iterator();
 		
 		Stream<String> stream = iteratorToSequentialStream(iterator);
-		System.out.println("sequential stream : " + stream.collect(Collectors.toList()));
+		System.out.println("sequential stream : " + stream.toList());
 	}
 
 }

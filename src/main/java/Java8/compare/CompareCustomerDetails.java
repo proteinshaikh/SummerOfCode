@@ -25,18 +25,18 @@ public class CompareCustomerDetails {
         customers.add(new Customer("Alpha", "savings", 10, "Arthur Road", "mumbai"));
 
         //sorting based on accountType
-        List<Customer> sortByAccountType = customers.stream().sorted(Comparator.comparing(Customer::getAccountType)).collect(Collectors.toList());
+        List<Customer> sortByAccountType = customers.stream().sorted(Comparator.comparing(Customer::getAccountType)).toList();
         System.out.println("sorting by account type: " + sortByAccountType);
 
         //sorting based on branch name
-        List<Customer> sortByBranchName = customers.stream().sorted(Comparator.comparing(Customer::getBranchName)).collect(toList());
+        List<Customer> sortByBranchName = customers.stream().sorted(Comparator.comparing(Customer::getBranchName)).toList();
         System.out.println("sorting by branch name: " + sortByBranchName.toString());
 
 
         //sort by accountType and branch name
         List sortByBranchNameAndAccountType = customers.stream().sorted(Comparator.comparing(Customer::getAccountType).
-                thenComparing(Customer::getBranchName)).collect(toList());
-        System.out.println("sorting by account type and branch name: " + sortByBranchNameAndAccountType.toString());
+                thenComparing(Customer::getBranchName)).toList();
+        System.out.println("sorting by account type and branch name: " + sortByBranchNameAndAccountType);
 
 
         //sort by accountType and branch name and group customers by branch name
