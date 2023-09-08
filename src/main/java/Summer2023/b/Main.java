@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 import java.util.Stack;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -1038,8 +1039,52 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    //Group employees by department, then further by those earning above and below a certain threshold.
+    static void groupAnd() {
+        employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.partitioningBy(e -> e.getSalary() > 2000)))
+                .forEach((k, v) -> {
+                    System.out.println(k + " = ");
+                    v.forEach((k1, v1) -> System.out.println(k1 + " = " + v1));
+                });
+    }
+
+    //Create a map where the key is an employee's name, and the value is their salary after a raise.
+    // Only include those with a salary below a certain threshold.
+    static void SalaryThreshold() {
+        employees.stream()
+                .filter(e -> e.getSalary() < 2000)
+                .collect(Collectors.toMap(Employee::getName, e -> e.getSalary() * 1.1, (k, v) -> k))//merge function
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    //Compute the sum of salaries for each department, but only for employees who have been with the company for more than 5 years.
+    static void moreThan() {
+        employees.stream()
+                .filter(x -> x.getAge() > 30)
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingLong(Employee::getSalary)))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    //Find duplicate strings in a list.
+    static void duplicatesInString() {
+        List<String> strings = List.of("a", "b", "c", "a", "b", "c", "d");
+        strings.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toSet())
+                .forEach(System.out::println);
+
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        diff();
+        //duplicatesInString();
+        //moreThan();
+        //SalaryThreshold();
+        //groupAnd();
+        //diff();
         /*Shapes shapes = (a, b) -> (a * b);
         System.out.println(shapes.rectangle(3, 2));
         System.out.println(shapes.square(5));*/
