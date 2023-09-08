@@ -1027,10 +1027,22 @@ public class Main {
         }
     }
 
+    // Given two lists, find elements that are in the first list but not in the second.
+    static void diff() {
+        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> list2 = Arrays.asList(2, 3, 4, 5, 6);
+
+        list1.stream()
+                .filter(x -> !list2.contains(x))
+                .toList()
+                .forEach(System.out::println);
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        Shapes shapes = (a, b) -> (a * b);
+        diff();
+        /*Shapes shapes = (a, b) -> (a * b);
         System.out.println(shapes.rectangle(3, 2));
-        System.out.println(shapes.square(5));
+        System.out.println(shapes.square(5));*/
         //reuse();
         //advGrouping();
         //fibonacci();
