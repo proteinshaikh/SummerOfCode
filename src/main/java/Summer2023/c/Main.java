@@ -1,6 +1,7 @@
 package Summer2023.c;
 
-import java.util.ArrayList;
+import org.springframework.util.comparator.Comparators;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class Main {
 
     private static final int[] arr = new int[]{1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 0, 3, 4};
 
-    private final List<Employee> employees = Arrays.asList(
+    private static final List<Employee> employeeList = Arrays.asList(
             new Employee(1, "john", 25, 5, 5000, "IT"),
             new Employee(2, "doe", 34, 7, 6000, "HR"),
             new Employee(3, "mary", 53, 6, 7000, "IT"),
@@ -27,7 +28,7 @@ public class Main {
 
     );
 
-    private final Map<Integer, Employee> map = employees.stream().collect(Collectors.toMap(Employee::getId, employee -> employee));
+    private static final Map<Integer, Employee> employeeMap = employeeList.stream().collect(Collectors.toMap(Employee::getId, employee -> employee));
 
 
     // program to get duplicates from an array and print the duplicates
@@ -53,8 +54,43 @@ public class Main {
                 .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
+    //program to find distinct salary of employees using streams
+    static void distinctId() {
+        employeeList.stream()
+                .map(Employee::getSalary)
+                .distinct()
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //program to find sum of salaries in each department
+    static void sumOfSalariesInEachDept() {
+        employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)))
+                .forEach((x, y) -> System.out.println(x + " = " + y));
+        System.out.println();
+
+        //with map
+        employeeMap.values().stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)))
+                .forEach((x, y) -> System.out.println(x + " = " + y));
+    }
+
+    //program to find count of each character in a string
+    static void countOfEachCharsInString() {
+
+        string.chars()
+                .mapToObj(c -> (char) c)
+                .filter(x -> !(x == '.') && !(x == ' '))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
     public static void main(String[] args) {
-        duplicates();
+        //countOfEachCharsInString();
+        //sumOfSalariesInEachDept();
+        //distinctId();
+        //duplicates();
 
     }
 }
