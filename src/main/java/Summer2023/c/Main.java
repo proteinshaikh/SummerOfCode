@@ -1,5 +1,8 @@
 package Summer2023.c;
 
+import Summer2023.a.defaultInterfaces.A;
+import kotlin.jvm.Synchronized;
+import org.apache.commons.math3.analysis.function.Sin;
 import org.springframework.util.comparator.Comparators;
 
 import java.util.Arrays;
@@ -7,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -86,7 +90,89 @@ public class Main {
                 .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
+    //program to check if a string is palindrome or not
+    static void palindrome() {
+        String str = "radar";
+
+        boolean res = IntStream.rangeClosed(0, str.length() / 2)
+                .allMatch(x -> str.charAt(x) == str.charAt(str.length() - x - 1));
+        System.out.println(res);
+    }
+
+    //program to find factorial
+    static int factorial(int num) {
+        if (num == 0 || num == 1) return 1;
+
+        return num * factorial(num - 1);
+    }
+
+    // program to define thread safe singleton
+
+    static class Singleton {
+        private static volatile Singleton instance;
+
+        private Singleton() {
+        }
+
+        public Singleton getInstance() {
+            if (instance == null) {
+                synchronized (Singleton.class) {
+                    if (instance == null) {
+                        instance = new Singleton();
+                    }
+                }
+            }
+            return instance;
+        }
+
+        public void doSomething() {
+            System.out.println("did something!");
+        }
+    }
+
+    //program to rotate array left using streams
+    static void rotateArray() {
+        IntStream.rangeClosed(0, arr.length - 1)
+                .boxed()
+                .map(i -> {
+                    if (i == 0) return arr[arr.length - 2];
+                    if (i == 1) return arr[arr.length - 1];
+                    return arr[i - 2];
+                })
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //program to check if list of numbers are divisible by 3
+    static void divisibleBy3() {
+        Arrays.stream(arr)
+                .boxed()
+                .filter(x -> x % 3 == 0 && x != 0)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // program to sum numbers in list
+    static void sumNumsInList() {
+        int sum = Arrays.stream(arr)
+                .sum();
+        System.out.println(sum);
+    }
+
+    //program to demonstrate reduce using streams
+    static void reduce() {
+        int sum = Arrays.stream(arr)
+                .reduce(0, Integer::sum);
+        System.out.println(sum);
+    }
+
     public static void main(String[] args) {
+        //reduce();
+        //sumNumsInList();
+        //divisibleBy3();
+        //rotateArray();
+        //System.out.println(factorial(5));
+        //palindrome();
         //countOfEachCharsInString();
         //sumOfSalariesInEachDept();
         //distinctId();
