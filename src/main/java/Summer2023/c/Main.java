@@ -6,8 +6,10 @@ import org.apache.commons.math3.analysis.function.Sin;
 import org.springframework.util.comparator.Comparators;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -166,7 +168,15 @@ public class Main {
         System.out.println(sum);
     }
 
+    //program to find max without max method
+    static void max() {
+        Optional<Integer> max = Arrays.stream(arr)
+                .boxed().max(Comparator.comparingInt(Integer::valueOf));
+        System.out.println(max);
+    }
+
     public static void main(String[] args) {
+        max();
         //reduce();
         //sumNumsInList();
         //divisibleBy3();
