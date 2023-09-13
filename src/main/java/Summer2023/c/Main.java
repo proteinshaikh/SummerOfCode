@@ -175,8 +175,38 @@ public class Main {
         System.out.println(max);
     }
 
+    //program to generate even numbers between 100 and 200
+    static void generateEvenNums() {
+        IntStream.rangeClosed(100, 200)
+                .boxed()
+                .filter(x -> x % 2 == 0)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // program to delete map entries
+    static void deleteMapEntries() {
+        employeeMap.keySet()
+                .stream()
+                .filter(x -> x != 2 && x != 7)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //program to reverse array
+    static void reverseArray() {
+        IntStream.rangeClosed(0, arr.length - 1)
+                .map(x -> arr[x] = arr[arr.length - x - 1])
+                .boxed()
+                .toList()
+                .forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
-        max();
+        //reverseArray();
+        //deleteMapEntries();
+        //generateEvenNums();
+        //max();
         //reduce();
         //sumNumsInList();
         //divisibleBy3();
