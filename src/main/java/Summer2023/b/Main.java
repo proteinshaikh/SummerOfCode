@@ -227,6 +227,7 @@ public class Main {
                 .forEach(x -> System.out.print(x + " "));
     }
 
+    //program to find max subarray sum
     static void maxSubArraySum() {
         int result = IntStream.rangeClosed(0, arr.length)
                 .boxed()

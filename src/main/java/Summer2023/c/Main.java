@@ -10,9 +10,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -202,7 +207,108 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    // You have been given an integer array/list(ARR) of size 'N'. It only contains 0s, 1s and 2s. Write a solution to sort this array/list.
+    static void sortArray() {
+        int[] array = new int[]{0, 1, 1, 0, 0, 2, 1, 1, 2};
+        Arrays.stream(array)
+                .boxed()
+                .sorted(Comparator.naturalOrder())
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //Largest Sum Contiguous SubArray (Kadane’s Algorithm)
+    static void maxSubArraySum() {
+        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int maxSoFar = arr[0];
+        int currentMax = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+            currentMax = Math.max(arr[i], currentMax + arr[i]);
+            maxSoFar = Math.max(maxSoFar, currentMax);
+        }
+        System.out.println(maxSoFar);
+    }
+
+    //program for supplier, consumer, and predicate
+    static void funcInterfaces() {
+        Predicate<Integer> predicate = x -> x > 2;
+        boolean res = predicate.test(4);
+        System.out.println(res);
+
+        Supplier<Integer> supplier = () -> new Random().nextInt(5);
+        System.out.println(supplier.get());
+
+        Consumer<String> consumer = System.out::println;
+        consumer.accept("test");
+
+        Consumer<String> consumer1 = str -> System.out.println(str.toUpperCase());
+        consumer1.accept("zeeshan");
+    }
+
+    // program to swap integers
+    static void swapIntegers() {
+        int[] array = new int[]{1, 2};
+
+        IntStream.rangeClosed(0, array.length - 1)
+                .boxed()
+                .map(i -> array[array.length - i - 1])
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Program to create streams
+
+    static void createStreams() {
+        Stream.of(1, 2, 3, 4, 5)
+                .skip(3)
+                .limit(1)
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Convert a list of strings to a map of their lengths using streams.
+    static void listOfStringsToMapOfLengths() {
+        Arrays.stream(string.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // find max and min number from a list
+    static void maxAndMinFromList() {
+        Optional<Integer> max = Arrays.stream(arr)
+                .boxed()
+                .max(Comparator.comparingInt(Integer::valueOf));
+        System.out.println(max);
+
+        Optional<Integer> min = Arrays.stream(arr)
+                .boxed()
+                .min(Comparator.comparingInt(Integer::valueOf));
+        System.out.println(min);
+    }
+
+    //Find the top N elements from a list.
+    static void topNElementsFromList(){
+        Arrays.stream(arr)
+                .boxed()
+                .limit(5)
+                .toList()
+                .forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
+        //topNElementsFromList();
+        //maxAndMinFromList();
+        //listOfStringsToMapOfLengths();
+        //createStreams();
+        //swapIntegers();
+        //funcInterfaces();
+        // maxSubArraySum();
+        //sortArray();
         //reverseArray();
         //deleteMapEntries();
         //generateEvenNums();
