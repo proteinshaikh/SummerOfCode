@@ -594,7 +594,6 @@ public class Main {
                 .skip(1)
                 .toList()
                 .forEach(System.out::println);
-
     }
 
     // Program to demonstrate lambda expression

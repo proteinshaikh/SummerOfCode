@@ -6,6 +6,7 @@ import org.apache.commons.math3.analysis.function.Sin;
 import org.springframework.util.comparator.Comparators;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Main {
 
     private static final String string = "hi my name is zeeshan akram shaikh. is zeeshan akram shaikh. akram shaikh";
 
-    private static final int[] arr = new int[]{1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 0, 3, 4};
+    private static final int[] arr = new int[]{1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 0, 3, 4, 153, 370};
 
     private static final List<Employee> employeeList = Arrays.asList(
             new Employee(1, "john", 25, 5, 5000, "IT"),
@@ -292,7 +293,7 @@ public class Main {
     }
 
     //Find the top N elements from a list.
-    static void topNElementsFromList(){
+    static void topNElementsFromList() {
         Arrays.stream(arr)
                 .boxed()
                 .limit(5)
@@ -300,7 +301,38 @@ public class Main {
                 .forEach(System.out::println);
     }
 
+    //program to filter employee name ends with
+    static void employeeNameEndsWith() {
+        employeeList.stream()
+                .filter(x -> x.getName().endsWith("b"))
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    //find armstrong number nums from list
+    static void armstrongNumber() {
+        //System.out.println(153 % 10);
+        int sum = 0;
+        int temp;
+        for (int a : Arrays.stream(arr).boxed().toList()) {
+            int orgNum = a;
+            while (a != 0) {
+                temp = a % 10;
+                int pow = (int) Math.pow(temp, 3);
+                sum += pow;
+                a = a / 10;
+            }
+            if (sum != 0 & orgNum == sum) {
+                System.out.println("armstrong number = " + sum);
+            }
+            sum = 0;
+
+        }
+    }
+
     public static void main(String[] args) {
+        armstrongNumber();
+        //employeeNameEndsWith();
         //topNElementsFromList();
         //maxAndMinFromList();
         //listOfStringsToMapOfLengths();
