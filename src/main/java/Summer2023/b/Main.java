@@ -372,7 +372,7 @@ public class Main {
         t2.start();
     }
 
-    // Program to filter out empty streams from list
+    // Program to filter out empty strings from list
     static void filterEmptyStrings() {
         List<String> strings = Arrays.asList("zeeshan", "", "shaikh", " ", "test");
 

@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -330,8 +331,80 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
-        armstrongNumber();
+    //Convert a list of objects to a map with a specific attribute as the key.
+    static void listToMap() {
+        employeeList.stream()
+                .collect(Collectors.toMap(Employee::getId, employeeList -> employeeList))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // program to demo threads
+    static class ExThread extends Thread {
+        @Override
+        public void run() {
+            System.out.println("exthread: " + Thread.currentThread().getId());
+
+        }
+    }
+
+    static class RunThread implements Runnable {
+
+        @Override
+        public void run() {
+            System.out.println("runThread: " + Thread.currentThread().getId());
+        }
+    }
+
+    // Program to filter out empty strings from list
+    static void filterEmptyStreams() {
+        List<String> strings = Arrays.asList("", "zeeshan", "test", "", "H");
+        strings.stream()
+                .filter(x -> !Objects.equals(x, ""))
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // program to generate random integers from 100 to 200
+    static void generateRandomNumbers() {
+        IntStream.generate(() -> 100 + new Random().nextInt(100))
+                .limit(5)
+                .boxed()
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // Program to print names 10 times
+    static void printNamesMultipleTimes() {
+        IntStream.rangeClosed(0, 9)
+                .forEach(x -> System.out.println("zeeshan"));
+    }
+
+    // Program to count alphabets using streams
+    static void countAlphabets() {
+        string.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> !x.getKey().equals('.') & !x.getKey().equals(' '))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+
+    public static void main(String[] args) throws InterruptedException {
+        //countAlphabets();
+        //printNamesMultipleTimes();
+        //generateRandomNumbers();
+        //filterEmptyStreams();
+        /*Thread t1 = new ExThread();
+        Thread t2 = new Thread(new RunThread());
+        t1.setPriority(Thread.MAX_PRIORITY);
+        t1.start();
+        t2.start();*/
+
+        //listToMap();
+        //armstrongNumber();
         //employeeNameEndsWith();
         //topNElementsFromList();
         //maxAndMinFromList();
