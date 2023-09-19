@@ -660,7 +660,7 @@ public class Main {
                 .toArray();
     }
 
-    // program to sort employee id reverse using streams"
+    // program to sort employee id reverse using streams
     static void sortReverse() {
         employees.stream()
                 .sorted(Comparator.comparing(Employee::getId).reversed())
@@ -911,7 +911,7 @@ public class Main {
 
     //check if a number is prime
     static void primeNums() {
-        int num = 3;
+        int num = 6;
 
         boolean res = IntStream.rangeClosed(2, (int) Math.sqrt(num))
                 .boxed()

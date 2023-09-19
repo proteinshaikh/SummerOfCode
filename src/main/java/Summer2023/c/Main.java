@@ -8,6 +8,7 @@ import org.springframework.util.comparator.Comparators;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -17,6 +18,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -391,8 +393,60 @@ public class Main {
                 .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
+    //prime number
+    static void primeNumber() {
+        Arrays.stream(arr)
+                .boxed()
+                .distinct()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        a -> a >= 1 & IntStream.rangeClosed(2, (int) Math.sqrt(a))
+                                .noneMatch(x -> a % x == 0)))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // Program to reverse String
+    static void reverseString() {
+        String str = "zeeshan";
+
+        IntStream.rangeClosed(0, str.length() - 1)
+                .mapToObj(x -> str.charAt(str.length() - x - 1))
+                .map(String::valueOf)
+                .toList()
+                .forEach(System.out::print);
+    }
+
+    //sort employees by emp id
+    static void sortEmployeesId() {
+        employeeList.stream()
+                .sorted(Comparator.comparing(Employee::getId).thenComparing(Employee::getAge).reversed())
+                .toList()
+                .forEach(System.out::println);
+    }
+
+    // program to find maximum salary of all employees in a department
+    static void maxSalaryPerDept() {
+        employeeList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary))))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    //find total salary by age
+    static void totalSalaryByAge() {
+        double salary = employeeList.stream()
+                .filter(x -> x.getAge() < 25)
+                .mapToDouble(Employee::getSalary)
+                .sum();
+        System.out.println(salary);
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
+        totalSalaryByAge();
+        //maxSalaryPerDept();
+        //sortEmployeesId();
+        //reverseString();
+        //primeNumber();
         //countAlphabets();
         //printNamesMultipleTimes();
         //generateRandomNumbers();
