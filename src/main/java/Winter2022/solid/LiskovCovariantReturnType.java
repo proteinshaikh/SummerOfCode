@@ -9,8 +9,7 @@ public class LiskovCovariantReturnType {
 
 class Producer {
     public Object produce(String string) {
-        String result = string.toLowerCase();
-        return result;
+        return string.toLowerCase();
     }
 }
 

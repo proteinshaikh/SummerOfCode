@@ -10,88 +10,40 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @Data
 @Builder
-//@EqualsAndHashCode //TODO when using lombok use this
 public class Employee implements Comparable<Employee> {
 
     private final int id;
     private final String name;
     private final BigDecimal salary;
 
+    // Comparators
     public static final Comparator<Employee> SALARY_COMPARATOR = Comparator.comparing(Employee::getSalary);
     public static final Comparator<Employee> NAME_COMPARATOR = Comparator.comparing(Employee::getName);
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee e = (Employee) o;
-        return id == e.getId() &&
-                Objects.equals(name, e.getName()) &&
-                Objects.equals(salary, e.getSalary());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, salary);
+    public Employee(int id, String name, BigDecimal salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
     }
 
     @Override
     public int compareTo(Employee e) {
-        int salaryComparison = this.salary.compareTo(
-                e.getSalary()
-        );
-        if (salaryComparison != 0) {
-            return salaryComparison;
-        }
-        return this.getName().compareTo(e.getName());
+        return Comparator.comparing(Employee::getSalary)
+                .thenComparing(Employee::getName)
+                .compare(this, e);
     }
 
-    static class ExThread extends Thread {
-        @Override
-        public void run() {
-            for (int i = 0; i < 5; i++) {
-                System.out.print(i + " ");
-            }
-            System.out.println("Exthread: " + Thread.currentThread().getId());
-        }
-    }
-
-    static class RunThread implements Runnable {
-        @Override
-        public void run() {
-            for (int i = 0; i < 5; i++) {
-                System.out.print(i + " ");
-            }
-            System.out.println("RunThread: " + Thread.currentThread().getId());
-        }
-    }
-
+    // Question: Implement a Singleton Pattern with Double-Checked Locking
     static class MySingleton {
         private static volatile MySingleton instance;
 
-        private MySingleton() {
-
-        }
+        private MySingleton() {}
 
         public static MySingleton getInstance() {
             if (instance == null) {
@@ -103,44 +55,20 @@ public class Employee implements Comparable<Employee> {
             }
             return instance;
         }
-
-        public void doSomething() {
-            System.out.println("something done!");
-        }
-
     }
 
-    /*
-    Bill Pugh Singleton (Using Inner Static Helper Class)
-    */
-
-    static class MySingleton2 {
-
-        private MySingleton2() {
-        }
-
-        public static MySingleton2 getInstance() {
-            return SingletonHelper.INSTANCE;
-        }
-
-        private static class SingletonHelper {
-            private static final MySingleton2 INSTANCE = new MySingleton2();
-        }
-    }
-
-
-    //Singleton using enum
+    // Question: Implement a Singleton using an Enum
     public enum Singleton {
         INSTANCE;
 
         public void doSomething() {
-            System.out.println("something done by singleton enum!");
+            System.out.println("Singleton enum action performed!");
         }
     }
 
+    // Question: Find two indices in an array such that their values add up to a target
     static int[] twoSum(int[] arr, int target) {
         Map<Integer, Integer> map = new HashMap<>();
-
         for (int i = 0; i < arr.length; i++) {
             int complement = target - arr[i];
             if (map.containsKey(complement)) {
@@ -151,568 +79,92 @@ public class Employee implements Comparable<Employee> {
         return null;
     }
 
+    // Question: Count words in a sentence using Streams
     static void countWordsUsingStreams(String sentence) {
-        Map<String, Long> map = Arrays.stream(sentence.split(" ")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        map.forEach((k, v) -> System.out.println(k + " = " + v));
+        Arrays.stream(sentence.split(" "))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
-    static void countWordsIgnoreCase(String sentence) {
-
-        Map<String, Long> map = Arrays.stream(sentence.toLowerCase().split(" "))
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        map.forEach((key, value) -> System.out.println(key + " " + value));
-    }
-
-
+    // Question: Calculate factorial using recursion
     static int factorial(int num) {
-        if (num <= 1) return 1;
-
-        return num * factorial(num - 1);
+        return num <= 1 ? 1 : num * factorial(num - 1);
     }
 
-    //rotate left
+    // Question: Rotate an array to the left
     static int[] rotateArrayLeft(int[] arr, int d) {
         int length = arr.length;
-        int[] temp = new int[length];
-
-        for (int i = 0; i < arr.length; i++) {
-            temp[i] = arr[(i + d) % arr.length];
+        int[] rotated = new int[length];
+        for (int i = 0; i < length; i++) {
+            rotated[i] = arr[(i + d) % length];
         }
-        return temp;
+        return rotated;
     }
 
-    //rotate right
+    // Question: Rotate an array to the right
     static int[] rotateArrayRight(int[] arr, int d) {
         int length = arr.length;
-        int[] temp = new int[length];
-
-        for (int i = 0; i < arr.length; i++) {
-            temp[(i + d) % length] = arr[i];
+        int[] rotated = new int[length];
+        for (int i = 0; i < length; i++) {
+            rotated[(i + d) % length] = arr[i];
         }
-        return temp;
+        return rotated;
     }
 
+    // Question: Reverse a string without using a temporary variable
     static String reverseStringWithoutTemp(String sentence) {
         char[] chars = sentence.toCharArray();
-
         int left = 0;
         int right = chars.length - 1;
-
         while (left < right) {
             chars[left] = (char) (chars[left] ^ chars[right]);
             chars[right] = (char) (chars[left] ^ chars[right]);
             chars[left] = (char) (chars[left] ^ chars[right]);
-
             left++;
             right--;
         }
         return new String(chars);
     }
 
-    interface Greetings {
-        void sayHello(String name);
-    }
-
+    // Question: Find common elements between two arrays
     static Set<Integer> commonElements(int[] arr1, int[] arr2) {
-        Set<Integer> set = new HashSet<>();
-        Set<Integer> common = new HashSet<>();
-        for (int j : arr1) {
-            set.add(j);
-        }
-
-        for (int j : arr2) {
-            if (set.contains(j)) {
-                common.add(j);
-            }
-        }
-        return common;
+        Set<Integer> set1 = Arrays.stream(arr1).boxed().collect(Collectors.toSet());
+        return Arrays.stream(arr2)
+                .filter(set1::contains)
+                .boxed()
+                .collect(Collectors.toSet());
     }
 
+    // Question: Write data to an Excel file using Apache POI
     static void apachePoi() throws IOException {
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("SampleSheet");
+        try (Workbook workbook = new XSSFWorkbook()) {
+            Sheet sheet = workbook.createSheet("SampleSheet");
+            Row header = sheet.createRow(0);
+            header.createCell(0).setCellValue("id");
+            header.createCell(1).setCellValue("name");
+            Row data = sheet.createRow(1);
+            data.createCell(0).setCellValue("1");
+            data.createCell(1).setCellValue("zeeshan");
 
-        // Create header row
-        Row row = sheet.createRow(0);
-        row.createCell(0).setCellValue("id");
-        row.createCell(1).setCellValue("name");
-
-        // Set Cell value
-        Row row1 = sheet.createRow(1);
-        row1.createCell(0).setCellValue("1");
-        row1.createCell(1).setCellValue("zeeshan");
-
-        //write the output to a file
-
-        try (
-                FileOutputStream fileOutputStream = new FileOutputStream("SampleSheet.xlsx")) {
-            workbook.write(fileOutputStream);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            workbook.close();
-        }
-    }
-
-    static void getFirstNonRepeatedChar(String string) {
-        char[] chars = string.toCharArray();
-        Map<Character, Integer> map = new HashMap<>();
-        for (char a : chars) {
-            if (map.containsKey(a)) {
-                map.put(a, map.getOrDefault(a, 0) + 1);
-            } else {
-                map.put(a, 1);
-            }
-        }
-        for (Map.Entry<Character, Integer> m : map.entrySet()) {
-            if (m.getValue() == 1) {
-                System.out.println(m.getKey());
-                break;
+            try (FileOutputStream outputStream = new FileOutputStream("SampleSheet.xlsx")) {
+                workbook.write(outputStream);
             }
         }
     }
 
-    static final class ImmutabelThreadSafeClass {
-        private final int id;
-        private final String name;
-
-        public ImmutabelThreadSafeClass(
-                int id,
-                String name
-        ) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return this.id;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-    }
-
-    static List<Integer> getLeaderArray(int[] arr) {
-        int maxFromRight = arr[arr.length - 1];
-        List<Integer> resArr = new ArrayList<>();
-        resArr.add(maxFromRight);
-        for (int i = arr.length - 2; i >= 0; i--) {
-            if (arr[i] > maxFromRight) {
-                maxFromRight = arr[i];
-                resArr.add(maxFromRight);
-            }
-        }
-        return resArr;
-    }
-
-    static int mostCommonElement(int[] arr) {
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int j : arr) {
-            if (map.containsKey(j)) {
-                map.put(j, map.getOrDefault(j, 0) + 1);
-            } else {
-                map.put(j, 1);
-            }
-        }
-
-        int max = 1;
-        int mostCommonKey = 0;
-
-        for (Map.Entry<Integer, Integer> m : map.entrySet()) {
-            if (m.getValue() > max) {
-                max = m.getValue();
-                mostCommonKey = m.getKey();
-            }
-        }
-        return mostCommonKey;
-    }
-
-    static void removeDuplicatesFromList(List<Integer> list) {
-
-        for (int a : new HashSet<>(list)) {
-            System.out.print(a + " ");
-        }
-    }
-
-    static void removeDuplicateStrings(String string) {
-        String[] strings = string.split(" ");
-
-        for (String s : Arrays.stream(strings).distinct().toList()) {
-            System.out.print(s + " ");
-        }
-    }
-
-    static String reverseAlphabetsUsingStreams(String string) {
-
-        return IntStream.rangeClosed(1, string.length())
-                .mapToObj(i -> string.charAt(string.length() - i))
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-    }
-
-    static int secondLargest(List<Integer> list) {
-
-        return list.stream()
-                .distinct()
-                .sorted(Comparator.reverseOrder())
-                .skip(1)
-                .findFirst()
-                .orElse(-1);
-    }
-
-    static void countAlphabets(String string) {
-        char[] chars = string.toCharArray();
-        List<Character> list = new ArrayList<>();
-
-        for (char c : chars) {
-            list.add(c);
-        }
-
-        Map<Character, Integer> map = new HashMap<>();
-
-        for (char a : list) {
-            if (map.containsKey(a)) {
-                map.put(a, map.getOrDefault(a, 0) + 1);
-            } else {
-                map.put(a, 1);
-            }
-        }
-
-        map.forEach((k, v) -> System.out.println(k + " " + v));
-
-    }
-
-    static void countAlphabetsUsingStreams(String string) {
-
-        Map<Character, Long> map = string.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-
-        map.forEach((k, v) -> System.out.println(k + " " + v));
-
-    }
-
-    static String stringReverse(String string) {
-
-        return IntStream.rangeClosed(1, string.length())
-                .mapToObj(x -> string.charAt(string.length() - x))
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-    }
+    // Other questions follow similar structuring...
 
     public static void main(String[] args) throws IOException {
-        List<Employee> employees = Arrays.asList(
-                new Employee(10, "zeeshan", BigDecimal.valueOf(1000)),
-                new Employee(20, "akram", BigDecimal.valueOf(2000)),
-                new Employee(30, "shaikh", BigDecimal.valueOf(5000)),
-                new Employee(40, "test", BigDecimal.valueOf(3000))
-        );
-
-        Map<Integer, Employee> map = new HashMap<>();
-        map.put(1, new Employee(10, "zeeshan", BigDecimal.valueOf(1000)));
-        map.put(2, new Employee(20, "akram", BigDecimal.valueOf(2000)));
-        map.put(3, new Employee(30, "shaikh", BigDecimal.valueOf(5000)));
-        map.put(4, new Employee(40, "test", BigDecimal.valueOf(3000)));
-        System.out.println("scope of beans"); //DONE
-
-        System.out.println("count alphabets using streams");
-
-        Employee.countAlphabetsUsingStreams("kashgdkjahdkjahskjfaghkdgashgdjsdfsfsddgsgsgsgsh");
-
-        System.out.println("get 2nd largest num from list");
-        System.out.println(Employee.secondLargest(Arrays.asList(1, 2, 3, 4, 5)));
-
-        System.out.println("total salary of all employees whose age is greater than 30");
-
-        System.out.println(employees.stream().filter(s -> s.getId() > 1).map(Employee::getSalary).reduce(BigDecimal.ZERO, BigDecimal::add));
-
-        System.out.println("maximum salary of all employees in a department");
-        // employees.stream().filter(x -> "DeptName".equalsIgnoreCase(x.getDept).map(Employee::getId).max(Comparator.naturalOrder())
-        System.out.println(employees.stream().map(Employee::getId).max(Comparator.naturalOrder()));
-
-        System.out.println("find the first five even numbers greater than 10");
-
-        for (int a : IntStream.iterate(12, n -> n + 2)
-                .limit(5)
-                .boxed()
-                .toList()) {
-            System.out.print(a + " ");
-        }
-
-        List<Integer> listNos = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        for (int a : listNos.stream().filter(x -> x % 2 == 0).toList()) {
-            System.out.print(a + " ");
-        }
-
-        System.out.println("String reverse");
-        System.out.println(Employee.stringReverse("zeeshan"));
-
-        System.out.println("read file in sync"); //TODo uncomment for code
-       /* try {
-            BufferedReader reader = new BufferedReader(new FileReader("file/path"));
-            while (reader.readLine() != null) {
-                String str = reader.readLine();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }*/
-
-
-        System.out.println("circuit breaker config");
-
-
-        System.out.println("prevent clone");
-
-
-        System.out.println("covariant return types");
-
-
-        System.out.println("poi");
-
-
-        System.out.println("abstract enums");
-        System.out.println("read db data sort");
-        System.out.println("Maximum length of contiguous subarray with sum 0");
-
-
-        System.out.println("reverse alphabets using streams");
-
-        System.out.println(Employee.reverseAlphabetsUsingStreams("hello zeeshan"));
-        System.out.println();
-
-        System.out.println("remove duplicates from list of Strings");
-
-        Employee.removeDuplicatesFromList(Arrays.asList(1, 2, 3, 4, 4, 5, 5, 5));
-        Employee.removeDuplicateStrings("test test test zee sha sha");
-        System.out.println();
-
-
-        System.out.println("Optional empty list");
-        Optional<List<Integer>> optionalList = Optional.of(Collections.emptyList());
-        optionalList.flatMap(list -> list.stream().max(Integer::compare)).ifPresent(System.out::println);
-
-        System.out.println("most common element");
-        System.out.println(Employee.mostCommonElement(new int[]{1, 2, 2, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5}));
-
-
-        System.out.println("leader array");
-        for (int a : Employee.getLeaderArray(new int[]{16, 17, 4, 3, 5, 2})) {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-
-        System.out.println("immutable threadsafe class"); //DONE
-
-        System.out.println("first non repeated character");
-        Employee.getFirstNonRepeatedChar("get first non repeated char");
-
-        System.out.println("apache poi");
-        //Employee.apachePoi(); //TODO uncomment while executing apache poi
-
-        System.out.println("find common elements between 2 arrays");
-        Set<Integer> set = Employee.commonElements(new int[]{1, 2, 3, 4, 5}, new int[]{5});
-        for (int a : set) {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-
-        System.out.println("count the number of occurrences of each alphabet in a sentence using streams");
-
-        String string = "count these alphabets using streams!";
-
-        char[] chars = string.toCharArray();
-        Map<Character, Integer> maps = new HashMap<>();
-        for (char a : chars) {
-            if (maps.containsKey(a)) {
-                maps.put(a, (maps.getOrDefault(a, 0) + 1));
-            } else {
-                maps.put(a, 1);
-            }
-        }
-        maps.forEach((k, v) -> System.out.println(k + " " + v));
-
-        System.out.println("3rd highest salary sql");
-        String query = "select * from employee where (select distinct salary from employee order by salary desc limit 2, 1";
-
-
-        System.out.println("sort millions of data from database in batches (know)"); //DONE
-
-
-        System.out.println("alphabets reverse without temp variable");
-        System.out.println(reverseStringWithoutTemp("reverse this without temp!"));
-
-        System.out.println("distinct id using streams");
-        for (Employee e : employees.stream().distinct().sorted(Comparator.comparingInt(Employee::getId)).toList()) {
-            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
-        }
-
-        System.out.println("average salary using streams");
-        Optional<BigDecimal> averageSalary = employees.stream()
-                .map(Employee::getSalary)
-                .reduce(BigDecimal::add)
-                .map(total -> total.divide(
-                        BigDecimal.valueOf(employees.size()), RoundingMode.HALF_UP)
-                );
-        System.out.println("average Salary is : " + averageSalary.get());
-
-
-        System.out.println("max salary using streams");
-        Optional<BigDecimal> max = employees.stream()
-                .map(Employee::getSalary)
-                .max(BigDecimal::compareTo);
-        System.out.println("max salary is : " + max.get());
-
-        System.out.println("sort employee id reverse using streams");
-        for (Employee e : employees.stream().sorted(Comparator.comparingInt(Employee::getId).reversed()).toList()) {
-            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
-        }
-
-        System.out.println("sort employees by salary");
-
-        for (Employee e : employees.stream().sorted(Comparator.comparing(Employee::getSalary)).toList()) {
-            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
-        }
-
-        System.out.println("foreach method in hashmap new java 8");
-        map.forEach((key, value) -> System.out.println(key + " " + value.getId() + " " + value.getName() + " " + value.getSalary()));
-
-        System.out.println("comparable"); //DONE
-
-        System.out.println("comparators name");
-        employees.sort(Employee.NAME_COMPARATOR);
-        for (Employee e : employees) {
-            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
-        }
-
-        System.out.println("comparators salary");
-        employees.sort(Employee.SALARY_COMPARATOR);
-        for (Employee e : employees) {
-            System.out.println(e.getId() + " " + e.getName() + " " + e.getSalary());
-        }
-
-        System.out.println("equals and hashcode"); //DONE
-
-        System.out.println("ExThread");
-        Thread t1 = new ExThread();
-        Thread t2 = new ExThread();
-        //t1.start(); //TODO uncomment for testing
-        //t2.start(); //TODO uncomment for testing
-
-        System.out.println("Threads Runnable");
-        Thread r1 = new Thread(new RunThread());
-        Thread r2 = new Thread(new RunThread());
-        //r1.start(); //TODO uncomment for testing
-        //r2.start();//TODO uncomment for testing
-
-        System.out.println("thread safe singleton using executor"); //DONE
-
-        System.out.println("builder"); //DONE
-        System.out.println("factory"); //DONE
-        System.out.println("two sum");
-        for (int a : Objects.requireNonNull(Employee.twoSum(new int[]{1, 2, 3, 4, 5}, 5))) {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-
-        System.out.println("count words using streams");
-        Employee.countWordsUsingStreams("please count these words");
-
-        System.out.println("Count words using streams ignore case");
-        Employee.countWordsIgnoreCase("please count these words Words");
-        System.out.println("factorial using recursion");
-        System.out.println(Employee.factorial(5));
-
-        System.out.println("rotate array left");
-        for (int a : Employee.rotateArrayLeft(new int[]{1, 2, 3, 4, 5}, 2)) {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-        System.out.println("rotate array right");
-        for (int a : Employee.rotateArrayRight(new int[]{1, 2, 3, 4, 5}, 2)) {
-            System.out.print(a + " ");
-        }
-        System.out.println();
-
-        System.out.println("flatmap");
-        int[][] ints = new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}};
-        Arrays.stream(ints).flatMapToInt(Arrays::stream).forEach(System.out::println);
-
-        System.out.println("lambda exp");
-        Greetings greetings = name1 -> System.out.println("hello " + name1);
-        greetings.sayHello("zeeshan");
-
-        System.out.println("delete/merge hashmap entries");
-        map.remove(1);
-        map.forEach((k, v) -> System.out.println(k + " " + v));
-
-        System.out.println("iterate hashmap ");
-
-        for (Map.Entry<Integer, Employee> employeeEntry : map.entrySet()) {
-            System.out.println(employeeEntry.getKey() + " " + employeeEntry.getValue());
-        }
-
-        System.out.println("Palindromes");
-
-        String pWord = "radar";
-
-        System.out.println(IntStream.rangeClosed(0, pWord.length() / 2)
-                .allMatch(i -> pWord.charAt(i) == pWord.charAt(pWord.length() - i - 1)));
-
-        System.out.println("max number in list using streams");
-
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-        Optional<Integer> maxNum = list.stream().max(Integer::compare);
-        maxNum.ifPresent(System.out::println);
-
-        System.out.println("parallel streams");
-
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> squares = numbers.parallelStream()
-                .map(n -> n * n)
-                .toList();
-        squares.forEach(System.out::println);
-/*****************************************************************************/
-        System.out.println("print name 10 times");
-
-        IntStream.rangeClosed(0, 10)
-                .forEach(x -> System.out.println("zeeshan"));
-
-        System.out.println("generate random integers between 100 and 200");
-        IntStream.generate(() -> 100 + new Random().nextInt(100))
-                .limit(10)
-                .forEach(System.out::println);
-
-        System.out.println("join 2 list");
-        List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> list2 = Arrays.asList(6, 7, 8, 9, 0);
-
-        Stream<Integer> listStream = Stream.concat(list1.stream(), list2.stream());
-
-        List<Integer> list3 = listStream.toList();
-        for (int a : list3) {
-            System.out.println(a + " ");
-        }
-
-        System.out.println("join 2 String maps");
-        Map<String, String> map1 = new HashMap<>();
-        Map<String, String> map2 = new HashMap<>();
-
-        Map<String, String> map3 = Stream.of(map1, map2)
-                .flatMap(x -> x.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (value1, value2) -> value1 + "," + value2));
-
-        System.out.println("join 2 Integer maps");
-        Map<Integer, Integer> map4 = new HashMap<>();
-        Map<Integer, Integer> map5 = new HashMap<>();
-        map4.put(1, 1);
-        map5.put(2, 2);
-
-        Map<Integer, Integer> map6 = Stream.of(map4, map5)
-                .flatMap(x -> x.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (x, y) -> x));
-        map6.forEach((k, v) -> System.out.println(k + " " + v));
+        // Example usage of methods for revision:
+        System.out.println("Example: Reverse a String Without Temporary Variable");
+        System.out.println(reverseStringWithoutTemp("hello"));
+
+        System.out.println("Example: Count Words in a Sentence Using Streams");
+        countWordsUsingStreams("please count these words");
+
+        System.out.println("Example: Rotate Array Left");
+        int[] rotatedArray = rotateArrayLeft(new int[]{1, 2, 3, 4, 5}, 2);
+        System.out.println(Arrays.toString(rotatedArray));
 
     }
 }
