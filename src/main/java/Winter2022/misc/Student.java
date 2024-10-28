@@ -1,7 +1,8 @@
 
 package Winter2022.misc;
 
-import org.jetbrains.annotations.NotNull;
+
+import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,7 +67,7 @@ public class Student implements Comparable<Student> {
 
 
     @Override
-    public int compareTo(@NotNull Student o) {
+    public int compareTo(@NonNull Student o) {
         if (this.getId() > o.getId()) return 1;
         if (this.getId() < o.getId()) return 1;
         return this.getName().compareTo(o.getName());

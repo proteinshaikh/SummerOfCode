@@ -1,34 +1,35 @@
 package Winter2022.g;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Tests {
+
     @Test
-    public void testSingleton() throws InterruptedException {
+    void testSingleton() throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 100; i++) {
             executorService.submit(() -> {
                 TSingleton singleton = TSingleton.getInstance();
                 singleton.doSomething();
-                Assert.assertSame(singleton, TSingleton.getInstance());
+                Assertions.assertSame(singleton, TSingleton.getInstance());
             });
         }
         executorService.shutdown();
-        while (!executorService.isTerminated()) {
-            Thread.sleep(100);
+        if (!executorService.awaitTermination(1, java.util.concurrent.TimeUnit.SECONDS)) {
+            executorService.shutdownNow();
         }
     }
 
-
     @Test
-    public void testBuilder() {
+    void testBuilder() {
         User user = new User.Builder(1, "zee")
                 .salary(1000)
                 .build();
-        System.out.println(user.getId() + " " + user.getSalary());
+        Assertions.assertEquals(1, user.getId());
+        Assertions.assertEquals(1000, user.getSalary());
     }
 }

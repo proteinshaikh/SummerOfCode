@@ -7,8 +7,11 @@ public class StringWrapperAndPrimitive_2 {
         String s3 = s1;
         String s4 = new String("Sachin");
         String s5 = new String("Sachin");
-        Character c1 = new Character('a');
-        Character c2 = new Character('a');
+
+        // Use valueOf instead of the deprecated Character constructor
+        Character c1 = Character.valueOf('a');
+        Character c2 = Character.valueOf('a');
+
         System.out.println("s1==s2 : " + (s1 == s2));
         System.out.println("s1.equals(s2) : " + s1.equals(s2));
         System.out.println("s1==s3 : " + (s1 == s3));

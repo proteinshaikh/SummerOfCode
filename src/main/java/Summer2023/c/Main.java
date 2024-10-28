@@ -1,14 +1,7 @@
 package Summer2023.c;
 
-import Summer2023.a.defaultInterfaces.A;
-import kotlin.jvm.Synchronized;
-import org.apache.commons.math3.analysis.function.Sin;
-import org.springframework.util.comparator.Comparators;
-
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -18,7 +11,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

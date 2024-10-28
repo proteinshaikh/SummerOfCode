@@ -1,6 +1,7 @@
 package Winter2022.comparable2;
 
-import org.jetbrains.annotations.NotNull;
+
+import lombok.NonNull;
 
 public class Employee implements Comparable<Employee> {
 
@@ -29,7 +30,7 @@ public class Employee implements Comparable<Employee> {
     }
 
     @Override
-    public int compareTo(@NotNull Employee o) {
+    public int compareTo(@NonNull Employee o) {
         if (id > o.getId()) return 1;
         if (id < o.getId()) return -1;
         return name.compareTo(o.getName());

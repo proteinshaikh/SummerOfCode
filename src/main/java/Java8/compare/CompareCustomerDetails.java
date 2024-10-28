@@ -7,8 +7,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
-
 /*
  * list of customer -> name, accttype, acctno, branchname, city
  * sort based on accttype, branchname nad group by branch name

@@ -1,7 +1,8 @@
 package Winter2022.i;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,7 +16,7 @@ public class Tests {
             executorService.submit(() -> {
                 ThreadSafeSingleton singleton = ThreadSafeSingleton.getInstance();
                 singleton.doSomething();
-                Assert.assertSame(singleton, ThreadSafeSingleton.getInstance());
+                Assertions.assertSame(singleton, ThreadSafeSingleton.getInstance());
             });
 
             executorService.shutdown();
