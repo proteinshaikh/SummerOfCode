@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class JavaLab {
+public class Lab {
 
     public static void main(String[] args) throws IOException {
 
@@ -168,6 +168,55 @@ public class JavaLab {
         Map<Integer, Integer> intMap1 = Map.of(1, 100, 2, 200);
         Map<Integer, Integer> intMap2 = Map.of(2, 300, 3, 400);
         System.out.println(joinIntegerMaps(intMap1, intMap2));
+
+        // 43. Find and print duplicate occurrences in an integer array
+        System.out.println("// 1. Find duplicate occurrences in an integer array");
+        Lab.getDuplicateOccurrencesStreams(new int[]{1, 2, 4, 4, 2, 5});
+
+        // 44. Find and print duplicate occurrences in a string array
+        System.out.println("\n// 2. Find duplicate occurrences in a string array");
+        Lab.getDuplicateOccurrencesOfStringsUsingStream();
+    }
+
+    // 43. Method to find duplicate occurrences in an integer array using streams
+    static void getDuplicateOccurrencesStreams(int[] arr) {
+        Map<Integer, Long> map = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        map.forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    // 44. Method to find duplicate occurrences in string arrays and lists using streams
+    static void getDuplicateOccurrencesOfStringsUsingStream() {
+        // Example 1: Find duplicates in a string array
+        System.out.println("String Array:");
+        String[] strings = new String[]{"zeeshan", "akram", "shaikh", "zeeshan"};
+
+        Arrays.stream(strings)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getKey().equals("zeeshan"))
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
+
+        // Example 2: Find duplicates in a list of strings
+        List<String> stringList = Arrays.asList("test", "akram", "shaikh", "test", "shaikh", "test");
+        System.out.println("\nList of Strings:");
+
+        stringList.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet()
+                .stream()
+                .filter(x -> x.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
     // 1. Implement a Singleton Pattern with Double-Checked Locking
