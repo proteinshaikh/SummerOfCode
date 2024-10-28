@@ -219,7 +219,7 @@ public class Lab {
                 .forEach((k, v) -> System.out.println(k + " = " + v));
     }
 
-    // 1. Implement a Singleton Pattern with Double-Checked Locking
+    // 1. Implement a Singleton Pattern with Double-Checked Locking. Thread safe
     static class MySingleton {
         private static volatile MySingleton instance;
 
