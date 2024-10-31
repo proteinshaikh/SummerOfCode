@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Lab {
+public class ProteinLab {
 
     public static void main(String[] args) throws IOException {
 
@@ -171,11 +171,11 @@ public class Lab {
 
         // 43. Find and print duplicate occurrences in an integer array
         System.out.println("// 1. Find duplicate occurrences in an integer array");
-        Lab.getDuplicateOccurrencesStreams(new int[]{1, 2, 4, 4, 2, 5});
+        ProteinLab.getDuplicateOccurrencesStreams(new int[]{1, 2, 4, 4, 2, 5});
 
         // 44. Find and print duplicate occurrences in a string array
         System.out.println("\n// 2. Find duplicate occurrences in a string array");
-        Lab.getDuplicateOccurrencesOfStringsUsingStream();
+        ProteinLab.getDuplicateOccurrencesOfStringsUsingStream();
     }
 
     // 43. Method to find duplicate occurrences in an integer array using streams
