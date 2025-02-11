@@ -71,21 +71,21 @@ public class CommonStreams {
     }
 
     public List<String> uniqueElements(List<String> list) {
-        return list.stream().distinct().collect(Collectors.toList());
+        return list.stream().distinct().toList();
     }
 
     public List<String> filterNonEmpty(List<String> list) {
-        return list.stream().filter(element -> !element.isEmpty()).collect(Collectors.toList());
+        return list.stream().filter(element -> !element.isEmpty()).toList();
     }
 
     public List<Integer> squareElements(List<Integer> numbers) {
-        return numbers.stream().map(n -> n * n).collect(Collectors.toList());
+        return numbers.stream().map(n -> n * n).toList();
     }
 
     public List<String> flattenListOfLists(List<List<String>> listOfLists) {
         return listOfLists.stream()
                 .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public static Map<Integer, Long> findDuplicates(int[] arr) {
